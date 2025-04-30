@@ -1,12 +1,20 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-pink: #FFBAD2;
+  --primary-pink-light: #FFE2EC;
+  --primary-pink-dark: #FFA5C0;
+  --header-bg: #ffe2e2;
+  --hero-bg: #ffebeb;
+  --section-padding: 4rem 2rem;
+  --text-color: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --text-color: #000000;
   }
 }
 
@@ -14,12 +22,13 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
+  color: var(--text-color);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -30,9 +39,77 @@ body {
   margin: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+p, span, div, li, label, input, textarea {
+  color: var(--text-color) !important;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+/* Footer override to ensure text is visible */
+footer p, footer span, footer div, footer li, footer label {
+  color: white !important;
+}
+
+.footer-text {
+  color: white !important;
+}
+
+.mantine-Button-root, .mantine-Badge-root, .mantine-ThemeIcon-root {
+  color: inherit !important;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.carousel-caption {
+  color: white !important;
+}
+
+.hero-title {
+  color: var(--primary-pink-dark) !important;
+  font-family: var(--font-playfair), serif;
+  letter-spacing: 0.02em;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+}
+
+section {
+  padding: var(--section-padding);
+}
+
+.section-title {
+  position: relative;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: var(--font-playfair), serif;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-pink);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 3rem 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
