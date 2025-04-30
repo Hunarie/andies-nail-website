@@ -2,7 +2,6 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     domains: ['placehold.co'], // Allow external image domains
     formats: ['image/avif', 'image/webp'], // Optimize image formats
