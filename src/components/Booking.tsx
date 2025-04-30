@@ -1,18 +1,30 @@
 'use client';
 
-import { Container, Text, Button, Box, Center, Modal } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import { Container, Text, Button, Box, Center } from '@mantine/core';
+import { useState, useCallback, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 
-// Dynamically import the Calendly widget with no SSR
-const InlineWidget = dynamic(
-  () => import('react-calendly').then((mod) => mod.InlineWidget),
+// Dynamically import Calendly components with no SSR
+const PopupModal = dynamic(
+  () => import('react-calendly').then((mod) => mod.PopupModal),
   { ssr: false }
 );
 
 export function Booking() {
-  const [opened, { open, close }] = useDisclosure(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
+  
+  // Set root element on mount
+  useEffect(() => {
+    setRootElement(document.getElementById('__next') || document.body);
+  }, []);
+  
+  // Open the Calendly popup
+  const openCalendly = useCallback(() => setIsOpen(true), []);
+  
+  // Close the Calendly popup
+  const closeCalendly = useCallback(() => setIsOpen(false), []);
   
   return (
     <Box 
@@ -48,7 +60,7 @@ export function Booking() {
               size="lg" 
               radius="sm" 
               color="pink.4"
-              onClick={open}
+              onClick={openCalendly}
               style={{
                 fontFamily: "var(--font-lato), sans-serif",
                 textTransform: 'uppercase',
@@ -66,82 +78,27 @@ export function Booking() {
         
         <span className="decorative-flourish">❦</span>
         
-        <Modal
-          opened={opened}
-          onClose={close}
-          title="Book Your Appointment"
-          size="xl"
-          fullScreen
-          centered
-          padding={0}
-          styles={{
-            header: {
-              borderBottom: '1px solid var(--border-color)',
-              padding: '15px',
-              position: 'static',
-              zIndex: 'auto',
-              backgroundColor: 'white',
-              height: '70px',
-              minHeight: '70px',
-              maxHeight: '70px'
-            },
-            title: {
-              fontFamily: "var(--font-playfair), serif",
-              fontSize: '1.5rem',
-              fontWeight: 500,
-              color: 'var(--primary-pink-dark)',
-              textAlign: 'center',
-              width: '100%'
-            },
-            close: {
-              color: 'var(--primary-pink-dark)',
-              '&:hover': {
-                backgroundColor: 'var(--primary-pink-light)'
-              }
-            },
-            body: {
-              padding: 0,
-              overflow: 'hidden',
-              display: 'flex',
-              flexDirection: 'column',
-              flexGrow: 1,
-              height: 'calc(100vh - 70px)' // 100vh minus header height
-            },
-            inner: {
-              padding: 0
-            },
-            content: {
-              display: 'flex',
-              flexDirection: 'column',
-              height: '100vh',
-              maxWidth: '100%',
-              width: '100%',
-              margin: 0,
-              borderRadius: 0,
-              overflow: 'hidden'
-            },
-            root: {
-              height: '100vh',
-              overflow: 'hidden'
-            }
-          }}
-          transitionProps={{ duration: 200 }}
-        >
-          <Box style={{ 
-            height: 'calc(100vh - 70px)', // 100vh minus header height
-            width: '100%',
-            overflow: 'hidden'
-          }}>
-            <InlineWidget
-              url={process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/jleeman2000"}
-              styles={{ 
-                height: '100%', 
-                width: '100%',
-                minHeight: '100%'
-              }}
-            />
-          </Box>
-        </Modal>
+        {rootElement && (
+          <PopupModal
+            url="https://calendly.com/jleeman2000"
+            onModalClose={closeCalendly}
+            open={isOpen}
+            rootElement={rootElement}
+            pageSettings={{
+              backgroundColor: 'ffffff',
+              hideEventTypeDetails: false,
+              hideLandingPageDetails: false,
+              primaryColor: 'ff85a2', // Pink color to match the theme
+              textColor: '4d5055'
+            }}
+            prefill={{
+              email: '',
+              firstName: '',
+              lastName: '',
+              name: ''
+            }}
+          />
+        )}
       </Container>
     </Box>
   );
