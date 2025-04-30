@@ -1,13 +1,13 @@
-'use client';
-
 import { Box } from '@mantine/core';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
-import { Services } from '@/components/Services';
-import { About } from '@/components/About';
-import { Contact } from '@/components/Contact';
-import { Booking } from '@/components/Booking';
-import { Footer } from '@/components/Footer';
+import dynamic from 'next/dynamic';
+
+const Services = dynamic(() => import('@/components/Services').then(mod => mod.Services));
+const About = dynamic(() => import('@/components/About').then(mod => mod.About));
+const Booking = dynamic(() => import('@/components/Booking').then(mod => mod.Booking));
+const Contact = dynamic(() => import('@/components/Contact').then(mod => mod.Contact));
+const Footer = dynamic(() => import('@/components/Footer').then(mod => mod.Footer));
 
 export default function Home() {
   return (

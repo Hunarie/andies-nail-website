@@ -1,42 +1,143 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Montserrat } from "next/font/google";
 import { MantineProvider, createTheme } from "@mantine/core";
+import { Playfair_Display, Cormorant_Garamond, Lato } from "next/font/google";
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
+// Load fonts with next/font/google (optimized)
+export const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
 });
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
+export const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
 });
 
-// Create custom theme with pink salon-like colors
+export const lato = Lato({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '700'],
+  variable: '--font-lato',
+});
+
+// Create custom theme with coquette-inspired, LoveShackFancy-like colors
 const theme = createTheme({
   primaryColor: 'pink',
   colors: {
     pink: [
-      '#FFF5F8',
-      '#FFECF2',
-      '#FFE2EC',
-      '#FFD8E6',
-      '#FFCEE0',
-      '#FFBAD2',
-      '#FFACC8',
-      '#FFA5C0',
-      '#FF9BB6',
-      '#FF91AD',
+      '#FCF2F5',
+      '#FCE5EA',
+      '#F9DDE3',
+      '#F7D5DD',
+      '#F7C8D2',
+      '#F4B6C3',
+      '#F0A9B8',
+      '#E596A6', 
+      '#DB8797',
+      '#D27888',
     ],
+    gold: [
+      '#F8F5ED',
+      '#F2EFDE',
+      '#EAE5CE',
+      '#E3DCBF',
+      '#D4C5A1',
+      '#C5B088',
+      '#B79C6F',
+      '#A48857',
+      '#93764B',
+      '#836542'
+    ],
+  },
+  fontFamily: `var(--font-lato), sans-serif`,
+  defaultRadius: '2px',
+  components: {
+    Button: {
+      defaultProps: {
+        radius: '2px',
+        color: 'pink.4',
+      },
+      styles: {
+        root: {
+          fontFamily: `var(--font-lato), sans-serif`,
+          textTransform: 'uppercase',
+          letterSpacing: '1px',
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            transform: 'translateY(-3px)',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          },
+        },
+      },
+    },
+    Card: {
+      defaultProps: {
+        padding: 'lg',
+        radius: '2px',
+      },
+      styles: {
+        root: {
+          border: '1px solid #f0e1e4',
+          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.03)',
+        },
+      },
+    },
+    TextInput: {
+      styles: {
+        input: {
+          borderColor: '#f0e1e4',
+          '&:focus': {
+            borderColor: '#f7c8d2',
+          },
+        },
+      },
+    },
   },
 });
 
 export const metadata: Metadata = {
-  title: "Andie Orozco's Nails",
-  description: "Professional nail services by Andie Orozco",
+  title: process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails",
+  description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "Professional nail services by Andie Orozco",
+  keywords: ["nails", "nail salon", "manicure", "pedicure", "nail art", "Andie Orozco"],
+  openGraph: {
+    title: process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails",
+    description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "Professional nail services by Andie Orozco",
+    url: "https://andieorozconails.com",
+    siteName: process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails",
+    images: [
+      {
+        url: "/img/nails1.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Andie Orozco's Nail Art"
+      }
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails",
+    description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "Professional nail services by Andie Orozco",
+    images: ["/img/nails1.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  }
 };
 
 export default function RootLayout({
@@ -45,8 +146,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${playfair.variable} ${montserrat.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${cormorant.variable} ${lato.variable}`}>
+      <body>
         <MantineProvider theme={theme}>
           {children}
         </MantineProvider>

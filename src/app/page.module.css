@@ -1,9 +1,9 @@
 .page {
-  --gray-rgb: 0, 0, 0;
+  --gray-rgb: 58, 58, 58;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
+  --button-primary-hover: #f0a9b8;
+  --button-secondary-hover: #fff7f9;
 
   display: grid;
   grid-template-rows: 20px 1fr 20px;
@@ -12,16 +12,19 @@
   min-height: 100svh;
   padding: 80px;
   gap: 64px;
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-cormorant), serif;
+  background-color: #fcf9f5;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f7c8d2' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='2'/%3E%3Ccircle cx='13' cy='13' r='2'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 @media (prefers-color-scheme: dark) {
   .page {
-    --gray-rgb: 255, 255, 255;
+    --gray-rgb: 58, 58, 58;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
     --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
+    --button-primary-hover: #f0a9b8;
+    --button-secondary-hover: #fff7f9;
+    background-color: #fcf9f5;
   }
 }
 
@@ -30,28 +33,53 @@
   flex-direction: column;
   gap: 32px;
   grid-row-start: 2;
+  position: relative;
+}
+
+.main::before,
+.main::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 3c-.5 0-1.8.3-3.5 1-1.8.6-3.2 1.3-4.4 2-1.2.8-2.2 1.7-3 2.7-.8 1-1.3 2.2-1.5 3.5-.3 1.3-.1 2.5.4 3.7.5 1.2 1.2 2.3 2.1 3.3 1 1 2 1.8 3.2 2.5 1.2.7 2.4 1.3 3.7 1.8-1.3.5-2.5 1.1-3.7 1.8-1.2.7-2.2 1.5-3.2 2.5-.9 1-1.6 2.1-2.1 3.3-.5 1.2-.7 2.4-.4 3.7.2 1.3.7 2.5 1.5 3.5.8 1 1.8 1.9 3 2.7 1.2.7 2.6 1.4 4.4 2 1.7.7 3 1 3.5 1s1.8-.3 3.5-1c1.8-.6 3.2-1.3 4.4-2 1.2-.8 2.2-1.7 3-2.7.8-1 1.3-2.2 1.5-3.5.3-1.3.1-2.5-.4-3.7-.5-1.2-1.2-2.3-2.1-3.3-1-1-2-1.8-3.2-2.5-1.2-.7-2.4-1.3-3.7-1.8 1.3-.5 2.5-1.1 3.7-1.8 1.2-.7 2.2-1.5 3.2-2.5.9-1 1.6-2.1 2.1-3.3.5-1.2.7-2.4.4-3.7-.2-1.3-.7-2.5-1.5-3.5-.8-1-1.8-1.9-3-2.7-1.2-.7-2.6-1.4-4.4-2-1.7-.7-3-1-3.5-1zm0 2c.3 0 1.1.2 2.4.8 1.6.6 2.7 1.2 3.6 1.8.9.6 1.7 1.3 2.3 2.1.6.8 1 1.6 1.1 2.6.1.9 0 1.8-.4 2.7-.4.9-.9 1.7-1.6 2.5-.7.8-1.5 1.4-2.5 2-1 .6-2 1.1-3.1 1.5 0 0-.1 0-.1.1-.1 0-.1 0-.1-.1-1.1.4-2.2.9-3.1 1.5-1 .6-1.8 1.2-2.5 2-.7.8-1.2 1.6-1.6 2.5-.4.9-.5 1.8-.4 2.7.1.9.5 1.8 1.1 2.6.6.8 1.4 1.5 2.3 2.1.9.6 2 1.2 3.6 1.8 1.3.6 2.1.8 2.4.8.3 0 1.1-.2 2.4-.8 1.6-.6 2.7-1.2 3.6-1.8.9-.6 1.7-1.3 2.3-2.1.6-.8 1-1.6 1.1-2.6.1-.9 0-1.8-.4-2.7-.4-.9-.9-1.7-1.6-2.5-.7-.8-1.5-1.4-2.5-2-1-.6-2-1.1-3.1-1.5 0 0-.1 0-.1-.1-.1 0-.1 0-.1-.1-1.1-.4-2.2-.9-3.1-1.5-1-.6-1.8-1.2-2.5-2-.7-.8-1.2-1.6-1.6-2.5-.4-.9-.5-1.8-.4-2.7.1-.9.5-1.8 1.1-2.6.6-.8 1.4-1.5 2.3-2.1.9-.6 2-1.2 3.6-1.8 1.3-.6 2.1-.8 2.4-.8z' fill='%23f7c8d2' fill-opacity='0.2'/%3E%3C/svg%3E");
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.main::before {
+  top: -60px;
+  left: -10px;
+}
+
+.main::after {
+  bottom: -60px;
+  right: -10px;
 }
 
 .main ol {
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-cormorant), serif;
   padding-left: 0;
   margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.01em;
   list-style-position: inside;
+  color: var(--gray-rgb);
 }
 
 .main li:not(:last-of-type) {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .main code {
   font-family: inherit;
   background: var(--gray-alpha-100);
-  padding: 2px 4px;
+  padding: 2px 8px;
   border-radius: 4px;
-  font-weight: 600;
+  font-weight: 500;
+  font-style: italic;
+  color: #f0a9b8;
 }
 
 .ctas {
@@ -61,33 +89,34 @@
 
 .ctas a {
   appearance: none;
-  border-radius: 128px;
+  border-radius: 2px;
   height: 48px;
-  padding: 0 20px;
-  border: none;
+  padding: 0 24px;
   border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
+  transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
   font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: var(--font-lato), sans-serif;
 }
 
 a.primary {
-  background: var(--foreground);
-  color: var(--background);
+  background: #f7c8d2;
+  color: #3a3a3a;
   gap: 8px;
+  border: 1px solid #f0a9b8;
 }
 
 a.secondary {
-  border-color: var(--gray-alpha-200);
+  border-color: #f0e1e4;
   min-width: 158px;
+  color: #3a3a3a;
 }
 
 .footer {
@@ -100,6 +129,9 @@ a.secondary {
   display: flex;
   align-items: center;
   gap: 8px;
+  font-family: var(--font-lato), sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.5px;
 }
 
 .footer img {
@@ -110,17 +142,21 @@ a.secondary {
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
     background: var(--button-primary-hover);
-    border-color: transparent;
+    border-color: #e596a6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
   a.secondary:hover {
     background: var(--button-secondary-hover);
-    border-color: transparent;
+    border-color: #f7c8d2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
   .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    text-decoration: none;
+    color: #f0a9b8;
   }
 }
 
@@ -128,6 +164,7 @@ a.secondary {
   .page {
     padding: 32px;
     padding-bottom: 80px;
+    background-size: 15px 15px;
   }
 
   .main {
@@ -137,15 +174,22 @@ a.secondary {
   .main ol {
     text-align: center;
   }
+  
+  .main::before,
+  .main::after {
+    width: 60px;
+    height: 60px;
+    background-size: 30px 30px;
+  }
 
   .ctas {
     flex-direction: column;
   }
 
   .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
+    font-size: 13px;
+    height: 42px;
+    padding: 0 20px;
   }
 
   a.secondary {
@@ -161,6 +205,6 @@ a.secondary {
 
 @media (prefers-color-scheme: dark) {
   .logo {
-    filter: invert();
+    filter: none;
   }
 }

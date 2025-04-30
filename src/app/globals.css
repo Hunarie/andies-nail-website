@@ -1,20 +1,23 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary-pink: #FFBAD2;
-  --primary-pink-light: #FFE2EC;
-  --primary-pink-dark: #FFA5C0;
-  --header-bg: #ffe2e2;
-  --hero-bg: #ffebeb;
+  --background: #fcf9f5; /* Cream/off-white base */
+  --foreground: #3a3a3a; /* Soft black for text */
+  --primary-pink: #f7c8d2; /* Soft pink */
+  --primary-pink-light: #fce5ea; /* Lighter pink */
+  --primary-pink-dark: #f0a9b8; /* Darker pink */
+  --secondary-pink: #ffbad2; /* Original pink */
+  --accent-gold: #d4c5a1; /* Gold accent */
+  --header-bg: #fff7f9; /* Light pink for header */
+  --hero-bg: #fff5f7; /* Very light pink for hero */
   --section-padding: 4rem 2rem;
-  --text-color: #000000;
+  --text-color: #3a3a3a;
+  --border-color: #f0e1e4; /* Soft pink border color */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --text-color: #000000;
+    --background: #fcf9f5; /* We'll override dark mode to maintain the coquette aesthetic */
+    --foreground: #3a3a3a;
+    --text-color: #3a3a3a;
   }
 }
 
@@ -28,7 +31,7 @@ body {
 body {
   color: var(--text-color);
   background: var(--background);
-  font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
+  font-family: var(--font-lato), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -43,25 +46,40 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-playfair), serif;
   font-weight: 500;
   letter-spacing: -0.02em;
+  color: var(--text-color);
 }
 
 p, span, div, li, label, input, textarea {
-  color: var(--text-color) !important;
-  font-family: var(--font-montserrat), sans-serif;
+  color: var(--text-color);
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-/* Footer override to ensure text is visible */
-footer p, footer span, footer div, footer li, footer label {
-  color: white !important;
+.mantine-Button-root {
+  font-family: var(--font-lato), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 1px;
+  transition: all 0.3s ease;
 }
 
-.footer-text {
-  color: white !important;
+.mantine-Button-root:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.mantine-Button-root, .mantine-Badge-root, .mantine-ThemeIcon-root {
+.mantine-Badge-root, .mantine-ThemeIcon-root {
   color: inherit !important;
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-lato), sans-serif;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.mantine-Badge-root span {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .carousel-caption {
@@ -72,23 +90,42 @@ footer p, footer span, footer div, footer li, footer label {
   color: var(--primary-pink-dark) !important;
   font-family: var(--font-playfair), serif;
   letter-spacing: 0.02em;
+  font-weight: 600;
+  font-style: italic;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-pink-dark);
 }
 
 section {
   padding: var(--section-padding);
+  position: relative;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
 }
 
 .section-title {
   position: relative;
-  font-size: 2rem;
+  font-size: 2.2rem;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   font-family: var(--font-playfair), serif;
+  font-weight: 500;
 }
 
 .section-title::after {
@@ -97,9 +134,56 @@ section {
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
+  width: 80px;
+  height: 2px;
   background-color: var(--primary-pink);
+}
+
+/* Add decorative elements */
+.decorative-flourish {
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--primary-pink-light);
+  margin: 1rem 0;
+}
+
+.decorative-border {
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 1.5rem;
+}
+
+/* Button styles */
+button, .button {
+  background-color: var(--primary-pink);
+  color: var(--text-color);
+  border: 1px solid var(--primary-pink-dark);
+  padding: 10px 24px;
+  font-family: var(--font-lato), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover, .button:hover {
+  background-color: var(--primary-pink-dark);
+}
+
+/* Input styles */
+input, textarea, select {
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  font-family: var(--font-lato), sans-serif;
+  background-color: #fff;
+  transition: border 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary-pink);
+  outline: none;
 }
 
 @media (max-width: 768px) {
@@ -110,10 +194,14 @@ section {
   .section-title {
     font-size: 1.75rem;
   }
+  
+  p, span, div, li, label, input, textarea {
+    font-size: 1rem;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    color-scheme: light; /* Force light mode for the coquette aesthetic */
   }
 }
