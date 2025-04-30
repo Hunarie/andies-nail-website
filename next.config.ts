@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_SITE_DESCRIPTION: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "Professional nail services by Andie Orozco",
     NEXT_PUBLIC_CALENDLY_URL: process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/jleeman2000",
   },
+  // Ensure proper 404 page handling
   async redirects() {
     return [
       // Add any redirects here
@@ -46,6 +47,20 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+  },
+  // Configure webpack if needed
+  webpack: (config, { isServer }) => {
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+      };
+    }
+    
+    return config;
   },
 };
 

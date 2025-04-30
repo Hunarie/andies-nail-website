@@ -12,6 +12,7 @@
     "@mantine/carousel": "^7.17.5",
     "@mantine/core": "^7.17.5",
     "@mantine/hooks": "^7.17.5",
+    "critters": "^0.0.23",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.9.2",
     "next": "15.3.1",
