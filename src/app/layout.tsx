@@ -29,7 +29,7 @@ export const lato = Lato({
   variable: '--font-lato',
 });
 
-// Create custom theme with coquette-inspired, LoveShackFancy-like colors
+// Create custom theme with coquette-inspired colors
 const theme = createTheme({
   primaryColor: 'pink',
   colors: {
