@@ -13,7 +13,6 @@ const carouselImages = [
   {
     src: '/img/nails2.jpg',
     alt: 'Nail salon workspace',
-    caption: 'Professional Nail Services'
   },
   {
     src: '/img/nails3.jpg',
@@ -23,7 +22,6 @@ const carouselImages = [
   {
     src: '/img/nails4.jpg',
     alt: 'Nail salon workspace',
-    caption: 'Professional Nail Services'
   }
 ];
 
