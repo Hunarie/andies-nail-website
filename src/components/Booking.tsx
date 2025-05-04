@@ -51,7 +51,7 @@ export function Booking() {
             fontSize: '1.4rem',
             lineHeight: 1.6
           }}>
-            Ready to transform your nails? Schedule your appointment now using my online booking system. 
+            Schedule your appointment now using my online booking system. 
             Choose the service, date, and time that works best for you.
           </Text>
           

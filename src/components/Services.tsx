@@ -224,7 +224,7 @@ export function Services() {
       
       <Container size="xl" style={{ position: 'relative', zIndex: 1 }}>
         <Center>
-          <SectionTitle>Our Services</SectionTitle>
+          <SectionTitle>My Services</SectionTitle>
         </Center>
         
         <CustomErrorBoundary message="Unable to load services. Please try again later.">

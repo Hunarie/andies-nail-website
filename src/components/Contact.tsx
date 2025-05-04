@@ -269,7 +269,7 @@ export function Contact() {
                 Follow On Social Media
               </Text>
               <Text size="sm" mb="xl" style={{ fontFamily: "var(--font-lato), sans-serif", color: 'var(--text-color)' }}>
-                Stay updated with the latest designs, promotions, and nail care tips by following my social media accounts.
+                Follow me on social media to stay updated on my journey &lt;3.
               </Text>
               <Group>
                 <Button 
