@@ -64,10 +64,11 @@ export function About() {
                   right: 0,
                   bottom: 0,
                   border: '1px solid var(--primary-pink-light)',
+                  borderRadius: '8px',
                   zIndex: 1
                 }}
               />
-              <div style={{ position: 'relative', aspectRatio: '1/1', zIndex: 2 }}>
+              <div style={{ position: 'relative', aspectRatio: '3/4', zIndex: 2 }}>
                 <NextImage
                   src="/img/andie-portrait.jpg"
                   alt="Andie the nail technician"
@@ -75,7 +76,7 @@ export function About() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   style={{
                     objectFit: 'cover',
-                    borderRadius: '2px',
+                    borderRadius: '8px',
                     boxShadow: '0 10px 20px rgba(0,0,0,0.05)'
                   }}
                 />

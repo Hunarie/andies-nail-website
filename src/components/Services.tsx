@@ -8,53 +8,53 @@ import { CustomErrorBoundary } from '@/components/ui/ErrorBoundary';
 
 const services = [
   {
-    title: 'Gel Manicure',
-    description: 'Long-lasting gel polish application that protects your natural nails and provides a glossy finish.',
-    price: '$45',
-    duration: '60 min',
-    image: '/img/gel-manicure.jpg',
-    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Gel+Manicure'
-  },
-  {
-    title: 'Acrylic Full Set',
-    description: 'Complete acrylic extension service with your choice of shape and design for stronger, longer nails.',
-    price: '$65',
-    duration: '90 min',
-    image: '/img/acrylic.jpg',
-    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Acrylic+Full+Set'
-  },
-  {
-    title: 'Nail Art Design',
-    description: 'Custom nail art ranging from simple patterns to elaborate designs, tailored to your preferences.',
-    price: '$20+',
-    duration: '30+ min',
-    image: '/img/nail-art.jpg',
-    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Nail+Art'
-  },
-  {
-    title: 'Dip Powder',
-    description: 'Odorless, durable nail enhancement using colored powder for a natural look with added strength.',
-    price: '$55',
-    duration: '75 min',
-    image: '/img/dip-powder.jpg',
-    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Dip+Powder'
-  },
-  {
-    title: 'Pedicure Deluxe',
-    description: 'Comprehensive foot care treatment with exfoliation, massage, and polish for rejuvenated feet.',
-    price: '$60',
-    duration: '60 min',
-    image: '/img/pedicure.jpg',
+    title: 'Gel-X Short Set',
+    description: 'Soft gel extension system that provides a natural-looking, longer nail. It combines the flexibility of gel polish with the strength of traditional acrylics.',
+    price: 'Starting at $50',
+    duration: 'Approx. 2 hours',
+    image: '/img/gel-x-short-set.jpg',
     imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
   },
   {
-    title: 'Nail Repair',
-    description: 'Quick fix for broken nails or lifting enhancements to restore shape and appearance.',
-    price: '$15',
-    duration: '20 min',
-    image: '/img/nail-repair.jpg',
-    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Nail+Repair'
-  }
+    title: 'Gel-X Medium Set',
+    description: 'Soft gel extension system that provides a natural-looking, longer nail. It combines the flexibility of gel polish with the strength of traditional acrylics.',
+    price: 'Starting at $60',
+    duration: 'Approx. 2 hrs 30 min',
+    image: '/img/gel-x-medium-set.jpg',
+    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
+  },
+  {
+    title: 'Gel-X Long Set',
+    description: 'Soft gel extension system that provides a natural-looking, longer nail. It combines the flexibility of gel polish with the strength of traditional acrylics.',
+    price: 'Starting at $70',
+    duration: 'Approx. 2 hrs 50 min',
+    image: '/img/gel-x-long-set.jpg',
+    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
+  },
+  {
+    title: 'Removal (Acetone Soak-Off)',
+    description: 'Product removal using an acetone soak and gentle buffing, completed with cuticle care.',
+    price: '$20',
+    duration: 'Approx. 45 min',
+    image: '/img/removal-acetone-soak-off.jpg',
+    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
+  },
+  {
+    title: 'Nail Cleanup',
+    description: 'Light shaping, buffing, and a full cuticle cleanup, finished with cuticle oil and an optional clear top coat.',
+    price: '$30',
+    duration: 'Approx. 45 min',
+    image: '/img/nail-cleanup.jpg',
+    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
+  },
+  {
+    title: 'Gel Manicure',
+    description: 'Full prep, cuticle work, and basic gel polish application, focusing on nail health with minimal damage.',
+    price: '$40',
+    duration: 'Approx. 1 hrs 30 min',
+    image: '/img/gel-manicure.jpg',
+    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
+  },
 ];
 
 function ServiceCard({ service }: { service: typeof services[0] }) {
@@ -140,7 +140,8 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
             lineHeight: '1.4',
             display: 'inline-flex',
             alignItems: 'center',
-            height: 'auto'
+            height: 'auto',
+            textTransform: 'none'
           }}
           size="lg"
         >
@@ -170,7 +171,8 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
             lineHeight: '1.4',
             display: 'inline-flex',
             alignItems: 'center',
-            height: 'auto'
+            height: 'auto',
+            textTransform: 'none'
           }}
         >
           {service.duration}
