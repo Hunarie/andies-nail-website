@@ -102,9 +102,9 @@ export function About() {
                   color: 'var(--text-color)',
                   lineHeight: 1.6
                 }}
-                mb="xl"
+                mb="md"
               >
-                I&apos;m a passionate nail technician specializing in creating beautiful, custom nail designs that reflect your unique personality and style. With an eye for detail and a commitment to staying on top of the latest trends, I ensure that every client leaves with nails they love.
+                Hi, I&apos;m Andie Orozco! Founder of Andie Orozco&apos;s Nails.
               </Text>
               <Text 
                 style={{ 
@@ -114,7 +114,7 @@ export function About() {
                 }}
                 mb="md"
               >
-                My journey into nail art began with a simple passion for creativity and self-expression. What started as a hobby quickly blossomed into a career as I realized how much joy I could bring to others through my nail designs.
+                My journey started in 2021, when I couldn&apos;t find a salon that took the time to create the detailed, creative nail designs I dreamed of. Tired of rushed appointments and limited options, I started doing my own nails to express my personal style.
               </Text>
               <Text 
                 style={{ 
@@ -122,8 +122,30 @@ export function About() {
                   color: 'var(--text-color)',
                   lineHeight: 1.6
                 }}
+                mb="md"
               >
-                Whether you&apos;re looking for elegant simplicity or bold statement pieces, I work closely with each client to understand their vision and bring it to life. I believe that beautiful nails can boost confidence and bring a smile to your face every time you glance at your hands.
+                Soon, friends and followers began noticing my work — and asking me to do theirs too. What began as a personal passion has now grown into a business rooted in creativity and quality service.
+              </Text>
+              <Text 
+                style={{ 
+                  fontFamily: "var(--font-lato), sans-serif",
+                  color: 'var(--text-color)',
+                  lineHeight: 1.6
+                }}
+                mb="md"
+              >
+                My goal is giving every client a personalized experience that leaves them feeling seen, confident, and proud of their look! Whether it&apos;s a minimalist set or a bold, artistic design — your nails deserve time, care, and creativity. I&apos;m here to deliver just that!
+              </Text>
+              <Text 
+                style={{ 
+                  fontFamily: "var(--font-lato), sans-serif",
+                  color: 'var(--text-color)',
+                  lineHeight: 1.6,
+                  opacity: 0.4
+                }}
+                mb="md"
+              >
+                ~ Andie Orozco ❤
               </Text>
             </Box>
           </Grid.Col>

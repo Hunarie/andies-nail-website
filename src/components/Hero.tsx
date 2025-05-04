@@ -91,7 +91,7 @@ export function Hero() {
             }}
             className="hero-title"
           >
-            Elevate Your Nail Game with Andie Orozco
+            Where Detail Meets Design
           </Title>
           
           <Text 
