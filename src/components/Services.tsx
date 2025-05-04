@@ -32,7 +32,7 @@ const services = [
     imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
   },
   {
-    title: 'Removal (Acetone Soak-Off)',
+    title: 'Gel-X Removal (Acetone Soak-Off)',
     description: 'Product removal using an acetone soak and gentle buffing, completed with cuticle care.',
     price: '$20',
     duration: 'Approx. 45 min',
