@@ -82,8 +82,61 @@ p, span, div, li, label, input, textarea {
   vertical-align: middle;
 }
 
+/* Remove any padding from carousel slides */
+.mantine-Carousel-slide {
+  padding: 0 !important;
+  background-color: transparent !important;
+}
+
 .carousel-caption {
   color: white !important;
+}
+
+.hero-carousel-slide {
+  position: relative;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  max-width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 3/4;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  pointer-events: none; /* Disable hover interactions on all devices */
+}
+
+.hero-carousel-image {
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 8px;
+  transition: transform 0.5s ease;
+  pointer-events: none; /* Disable touch interactions on all devices */
+}
+
+/* Remove hover effects completely */
+.hero-carousel-slide:hover {
+  transform: none;
+}
+
+.hero-carousel-slide:hover .hero-carousel-image {
+  transform: none;
+}
+
+.hero-content {
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.hero-description {
+  font-size: 1.3rem;
+}
+
+.hero-button {
+  height: 3rem !important;
+}
+
+.hero-decorative-element {
+  display: block;
 }
 
 .hero-title {
@@ -92,6 +145,7 @@ p, span, div, li, label, input, textarea {
   letter-spacing: 0.02em;
   font-weight: 600;
   font-style: italic;
+  font-size: 3.2rem;
 }
 
 a {
@@ -197,6 +251,62 @@ input:focus, textarea:focus, select:focus {
   
   p, span, div, li, label, input, textarea {
     font-size: 1rem;
+  }
+  
+  .hero-carousel-slide {
+    max-width: 280px;
+    aspect-ratio: 3/4;
+    border-radius: 6px;
+    border: none;
+    margin: 0 auto;
+    pointer-events: none; /* Disable touch interactions on slide container */
+  }
+  
+  .mantine-Carousel-root {
+    box-shadow: none !important;
+  }
+  
+  .mantine-Carousel-slide {
+    padding-bottom: 5px;
+  }
+  
+  .mantine-Carousel-indicators {
+    bottom: -25px !important;
+  }
+  
+  .mantine-Carousel-slide[data-active] {
+    opacity: 1;
+  }
+  
+  .hero-carousel-image {
+    border-radius: 6px;
+    pointer-events: none; /* Disable touch interactions */
+  }
+  
+  .carousel-caption {
+    font-size: 1.25rem !important;
+    padding: 20px 15px !important;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem !important;
+  }
+  
+  .hero-description {
+    font-size: 1.1rem;
+  }
+  
+  .hero-content {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-button {
+    height: 2.5rem !important;
+  }
+  
+  .hero-decorative-element {
+    display: none;
   }
 }
 
