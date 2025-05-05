@@ -34,7 +34,7 @@ export function Navbar() {
       <Container className={styles.navbarContainer}>
         <Group className={styles.navbarGroup}>
           <Text className={styles.logo} component="div">
-            {process.env.NEXT_PUBLIC_SITE_NAME?.split("'")[0] || "Andie's"} Nails
+            {process.env.NEXT_PUBLIC_SITE_NAME}
             {/* Decorative underline */}
             <div className={styles.logoUnderline} />
           </Text>
