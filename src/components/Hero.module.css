@@ -120,7 +120,7 @@
 }
 
 /* Override Mantine carousel styles */
-:global(.mantine-Carousel-slide) {
+.carouselContainer :global(.mantine-Carousel-slide) {
   padding: 0 !important;
   background-color: transparent !important;
 }
@@ -166,19 +166,19 @@
     padding: 20px 15px !important;
   }
 
-  :global(.mantine-Carousel-root) {
+  .carouselContainer :global(.mantine-Carousel-root) {
     box-shadow: none !important;
   }
   
-  :global(.mantine-Carousel-slide) {
+  .carouselContainer :global(.mantine-Carousel-slide) {
     padding-bottom: 5px;
   }
   
-  :global(.mantine-Carousel-indicators) {
+  .carouselContainer :global(.mantine-Carousel-indicators) {
     bottom: -25px !important;
   }
   
-  :global(.mantine-Carousel-slide[data-active]) {
+  .carouselContainer :global(.mantine-Carousel-slide[data-active]) {
     opacity: 1;
   }
 } 
