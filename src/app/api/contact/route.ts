@@ -1,5 +1,17 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import nodemailer from 'nodemailer';
+
+// Create a transporter object
+const transporter = nodemailer.createTransport({
+  host: process.env.EMAIL_HOST || 'smtp.example.com',
+  port: parseInt(process.env.EMAIL_PORT || '587'),
+  secure: process.env.EMAIL_SECURE === 'true',
+  auth: {
+    user: process.env.EMAIL_USER || '',
+    pass: process.env.EMAIL_PASSWORD || '',
+  },
+});
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,11 +25,23 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Here you would integrate with your email service
-    // Example: await sendEmail(body);
+    // Setup email data
+    const mailOptions = {
+      from: process.env.EMAIL_FROM || 'your-email@example.com',
+      to: process.env.EMAIL_TO || 'recipient@example.com',
+      replyTo: body.email,
+      subject: `Contact Form: Message from ${body.name}`,
+      text: `Name: ${body.name}\nEmail: ${body.email}\nMessage: ${body.message}`,
+      html: `
+        <h3>New Contact Form Submission</h3>
+        <p><strong>Name:</strong> ${body.name}</p>
+        <p><strong>Email:</strong> ${body.email}</p>
+        <p><strong>Message:</strong> ${body.message}</p>
+      `,
+    };
     
-    // For now, just log the data and return success
-    console.log('Contact form submission:', body);
+    // Send the email
+    await transporter.sendMail(mailOptions);
     
     return NextResponse.json(
       { message: 'Message sent successfully' },
