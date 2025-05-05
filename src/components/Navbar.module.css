@@ -1,0 +1,117 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.03);
+}
+
+.logo {
+  font-family: var(--font-playfair);
+  font-size: clamp(28px, 5vw, 44px);
+  color: var(--primary-pink-dark);
+  letter-spacing: 0.5px;
+  position: relative;
+  font-style: italic;
+}
+
+.logoUnderline {
+  position: absolute;
+  bottom: -2px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-pink-light), transparent);
+}
+
+.navLink {
+  transition: all 0.3s ease;
+  font-family: var(--font-cormorant);
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.navLink:hover {
+  color: var(--primary-pink-dark);
+}
+
+.navButton {
+  font-family: var(--font-lato);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+  border: 1px solid var(--primary-pink-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.socialIcon {
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+/* Drawer styles */
+.drawerHeader {
+  width: 100%;
+  position: relative;
+}
+
+.drawerLogo {
+  color: var(--primary-pink-dark);
+  font-family: var(--font-playfair);
+  font-size: 30px;
+  position: relative;
+  font-style: italic;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 80%;
+}
+
+.drawerLogoUnderline {
+  position: absolute;
+  bottom: -4px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-pink-light), transparent);
+}
+
+.drawerCloseButton {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 1000;
+}
+
+.drawerLink {
+  text-align: center;
+  width: 100%;
+  font-family: var(--font-playfair);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.drawerButton {
+  font-family: var(--font-lato);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--primary-pink-dark);
+  max-width: 250px;
+}
+
+.drawerSocial {
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+.drawerSocialIcon {
+  border: 1px solid var(--border-color);
+}
+
+.decorativeFlourish {
+  margin-top: 2rem;
+} 

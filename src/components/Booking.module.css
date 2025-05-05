@@ -1,0 +1,27 @@
+.bookingSection {
+  background-color: var(--hero-bg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bookingCard {
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.bookingText {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.bookButton {
+  font-family: var(--font-lato), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--primary-pink-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 0 2rem;
+  height: 3rem;
+} 

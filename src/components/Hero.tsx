@@ -3,6 +3,7 @@
 import { Container, Title, Text, Button, Box } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import NextImage from 'next/image';
+import styles from './Hero.module.css';
 
 const carouselImages = [
   {
@@ -29,67 +30,28 @@ export function Hero() {
   return (
     <Box 
       id="home" 
-      style={{ 
-        backgroundColor: 'var(--hero-bg)',
-        paddingTop: '2rem',
-        paddingBottom: '5rem',
-        position: 'relative',
-        overflow: 'hidden'
-      }}
+      className={styles.heroContainer}
     >
       {/* Decorative elements */}
       <div 
-        className="hero-decorative-element"
-        style={{
-          position: 'absolute', 
-          top: 40, 
-          left: 20, 
-          fontSize: '2rem',
-          color: 'var(--primary-pink-light)',
-          opacity: 0.5
-        }}
+        className={`${styles.decorativeElement} ${styles.decorativeElementTop}`}
       >
         ✿
       </div>
       <div 
-        className="hero-decorative-element"
-        style={{
-          position: 'absolute', 
-          bottom: 60, 
-          right: 40, 
-          fontSize: '2.5rem',
-          color: 'var(--primary-pink-light)',
-          opacity: 0.5
-        }}
+        className={`${styles.decorativeElement} ${styles.decorativeElementBottom}`}
       >
         ❀
       </div>
       
       <Container size="xl">
-        <Box
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '2rem',
-            alignItems: 'center',
-            textAlign: 'center',
-            marginBottom: '2.5rem',
-            position: 'relative'
-          }}
-          className="hero-content"
-        >
+        <Box className={styles.heroContent}>
           <span className="decorative-flourish">✦ ✧ ✦</span>
           
           <Title
             order={1}
             size="2.5rem"
-            style={{
-              color: 'var(--primary-pink-dark)',
-              lineHeight: 1.2,
-              fontStyle: 'italic',
-              fontWeight: 500
-            }}
-            className="hero-title"
+            className={styles.heroTitle}
           >
             Where Detail Meets Design
           </Title>
@@ -98,8 +60,7 @@ export function Hero() {
             size="lg"
             maw={700} 
             mx="auto" 
-            style={{ lineHeight: 1.7 }}
-            className="hero-description"
+            className={styles.heroDescription}
           >
             Premium nail services that combine creativity, precision, and luxury.
             Experience the best in nail artistry with personalized designs.
@@ -111,13 +72,7 @@ export function Hero() {
             size="md"
             radius="sm"
             color="pink.4"
-            style={{ 
-              marginTop: '0.5rem', 
-              padding: '0 2rem', 
-              height: '2.8rem',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.07)'
-            }}
-            className="hero-button"
+            className={styles.heroButton}
           >
             Book Your Appointment
           </Button>
@@ -125,14 +80,7 @@ export function Hero() {
           <span className="decorative-flourish">❦</span>
         </Box>
 
-        <Box
-          style={{
-            maxWidth: '1100px',
-            margin: '0 auto',
-            padding: '0',
-            backgroundColor: 'var(--hero-bg)'
-          }}
-        >
+        <Box className={styles.carouselContainer}>
           <Carousel
             withIndicators
             height={450}
@@ -182,38 +130,25 @@ export function Hero() {
           >
             {carouselImages.map((image, index) => (
               <Carousel.Slide key={index}>
-                <Box className="hero-carousel-slide">
-                  <div style={{ 
-                    position: 'absolute', 
-                    bottom: 0, 
-                    left: 0, 
-                    right: 0, 
-                    padding: '26px 20px', 
-                    background: 'linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%)',
-                    color: 'white',
-                    textAlign: 'center',
-                    zIndex: 10
-                  }}>
-                    <Text 
-                      size="xl" 
-                      fw={500} 
-                      className="carousel-caption"
-                      style={{ 
-                        fontFamily: "var(--font-playfair), serif",
-                        fontSize: '1.5rem',
-                        fontStyle: 'italic'
-                      }}
-                    >
-                      {image.caption}
-                    </Text>
-                  </div>
-                  <div style={{ position: 'relative', height: '100%', width: '100%' }}>
+                <Box className={styles.carouselSlideWrapper}>
+                  {image.caption && (
+                    <div className={styles.carouselCaption}>
+                      <Text 
+                        size="xl" 
+                        fw={500} 
+                        className={styles.captionText}
+                      >
+                        {image.caption}
+                      </Text>
+                    </div>
+                  )}
+                  <div className={styles.carouselSlide}>
                     <NextImage
                       src={image.src}
                       alt={image.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 450px"
-                      className="hero-carousel-image"
+                      className={styles.carouselImage}
                       priority={index === 0}
                     />
                   </div>

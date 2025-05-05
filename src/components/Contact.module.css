@@ -1,0 +1,118 @@
+.contactSection {
+  background-color: var(--background);
+  padding: var(--section-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+.decorativeCircleTop {
+  position: absolute;
+  top: 50px;
+  right: 80px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--primary-pink-light);
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.decorativeCircleBottom {
+  position: absolute;
+  bottom: 120px;
+  left: 40px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--primary-pink-light);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+.descriptionText {
+  color: var(--text-color);
+  font-family: var(--font-lato), sans-serif;
+}
+
+.formInput {
+  border-color: var(--border-color);
+}
+
+.formInput:focus {
+  border-color: var(--primary-pink);
+}
+
+.formLabel {
+  font-family: var(--font-lato), sans-serif;
+}
+
+.submitButton {
+  background-color: var(--primary-pink);
+  color: white;
+  font-family: var(--font-lato), sans-serif;
+  transition: all 0.3s ease;
+  border: none;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.submitButton:hover {
+  background-color: var(--primary-pink-dark);
+}
+
+.contactCard {
+  border-color: var(--border-color);
+  background-color: #fff7f9;
+  transition: transform 0.3s ease;
+}
+
+.contactCard:hover {
+  transform: translateY(-3px);
+}
+
+.iconColor {
+  color: var(--primary-pink-dark);
+}
+
+.cardTitle {
+  font-family: var(--font-lato), sans-serif;
+  color: var(--text-color);
+}
+
+.cardText {
+  font-family: var(--font-lato), sans-serif;
+  color: var(--text-color);
+}
+
+.socialCard {
+  border-color: var(--border-color);
+  background-color: #fff7f9;
+}
+
+.socialTitle {
+  font-family: var(--font-playfair), serif;
+  color: var(--text-color);
+}
+
+.socialText {
+  font-family: var(--font-lato), sans-serif;
+  color: var(--text-color);
+}
+
+.socialButton {
+  border-color: var(--primary-pink);
+  color: var(--primary-pink-dark);
+  font-family: var(--font-lato), sans-serif;
+  transition: all 0.3s ease;
+}
+
+.socialButton:hover {
+  background-color: var(--primary-pink-light);
+  border-color: var(--primary-pink-dark);
+  color: var(--primary-pink-dark);
+} 

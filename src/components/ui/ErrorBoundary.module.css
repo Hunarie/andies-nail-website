@@ -1,0 +1,21 @@
+.errorContainer {
+  text-align: center;
+  background-color: var(--background);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  margin: 1rem 0;
+}
+
+.errorTitle {
+  font-family: var(--font-playfair), serif;
+  color: var(--primary-pink-dark);
+}
+
+.errorText {
+  font-family: var(--font-lato), sans-serif;
+}
+
+.errorButton {
+  font-family: var(--font-lato), sans-serif;
+} 

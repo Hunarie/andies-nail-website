@@ -15,6 +15,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { FaInstagram, FaTiktok } from 'react-icons/fa';
+import styles from './Navbar.module.css';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -30,38 +31,14 @@ export function Navbar() {
     <Box 
       py="xs" 
       px="md" 
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        backgroundColor: 'var(--header-bg)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid var(--border-color)',
-        boxShadow: '0 1px 10px rgba(0, 0, 0, 0.03)'
-      }}
+      className={styles.navbar}
     >
       <Container size="xl">
         <Group justify="space-between" h={70}>
-          <Text fw={600} style={{ 
-            fontFamily: "var(--font-playfair)",
-            fontSize: 'clamp(28px, 5vw, 44px)', // Responsive font size
-            color: 'var(--primary-pink-dark)',
-            letterSpacing: '0.5px',
-            position: 'relative',
-            fontStyle: 'italic'
-          }}
-          component="div"
-          >
+          <Text fw={600} className={styles.logo} component="div">
             {process.env.NEXT_PUBLIC_SITE_NAME?.split("'")[0] || "Andie's"} Nails
             {/* Decorative underline */}
-            <div style={{
-              position: 'absolute',
-              bottom: -2,
-              left: '10%',
-              width: '80%',
-              height: '1px',
-              background: 'linear-gradient(90deg, transparent, var(--primary-pink-light), transparent)'
-            }} />
+            <div className={styles.logoUnderline} />
           </Text>
 
           {/* Desktop navigation */}
@@ -73,16 +50,7 @@ export function Navbar() {
                 underline="hover"
                 fw={500}
                 c="dark.6"
-                style={{ 
-                  transition: 'all 0.3s ease',
-                  fontFamily: "var(--font-cormorant)",
-                  fontSize: '18px',
-                  letterSpacing: '0.8px',
-                  textTransform: 'uppercase',
-                  '&:hover': { 
-                    color: 'var(--primary-pink-dark)',
-                  }
-                }}
+                className={styles.navLink}
               >
                 {link.label}
               </Anchor>
@@ -93,14 +61,7 @@ export function Navbar() {
               color="pink.4"
               radius="sm"
               variant="filled"
-              style={{
-                fontFamily: "var(--font-lato)",
-                textTransform: 'uppercase',
-                letterSpacing: '1px',
-                fontSize: '14px',
-                border: '1px solid var(--primary-pink-dark)',
-                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.05)'
-              }}
+              className={styles.navButton}
             >
               Book Now
             </Button>
@@ -117,10 +78,7 @@ export function Navbar() {
               href={process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/andiee.orozco2/"}
               target="_blank"
               aria-label="Instagram"
-              style={{
-                border: '1px solid var(--border-color)',
-                transition: 'all 0.3s ease'
-              }}
+              className={styles.socialIcon}
             >
               <FaInstagram size={22} />
             </ActionIcon>
@@ -133,10 +91,7 @@ export function Navbar() {
               href={process.env.NEXT_PUBLIC_TIKTOK_URL || "https://www.tiktok.com/@andieorozco4"}
               target="_blank"
               aria-label="TikTok"
-              style={{
-                border: '1px solid var(--border-color)',
-                transition: 'all 0.3s ease'
-              }}
+              className={styles.socialIcon}
             >
               <FaTiktok size={20} />
             </ActionIcon>
@@ -152,28 +107,10 @@ export function Navbar() {
         opened={opened}
         onClose={close}
         title={
-          <Center style={{ width: '100%', position: 'relative' }}>
-            <Text fw={600} size="xl" style={{ 
-              color: 'var(--primary-pink-dark)',
-              fontFamily: "var(--font-playfair)",
-              fontSize: '30px',
-              position: 'relative',
-              fontStyle: 'italic',
-              margin: '0 auto',
-              textAlign: 'center',
-              maxWidth: '80%'
-            }}
-            component="div"
-            >
+          <Center className={styles.drawerHeader}>
+            <Text fw={600} size="xl" className={styles.drawerLogo} component="div">
               {process.env.NEXT_PUBLIC_SITE_NAME?.split("'")[0] || "Andie's"} Nails
-              <div style={{
-                position: 'absolute',
-                bottom: -4,
-                left: '10%',
-                width: '80%',
-                height: '1px',
-                background: 'linear-gradient(90deg, transparent, var(--primary-pink-light), transparent)'
-              }} />
+              <div className={styles.drawerLogoUnderline} />
             </Text>
           </Center>
         }
@@ -199,16 +136,14 @@ export function Navbar() {
           }
         }}
       >
-        <Box style={{ position: 'absolute', right: '15px', top: '15px', zIndex: 1000 }}>
+        <Box className={styles.drawerCloseButton}>
           <ActionIcon 
             size="lg" 
             onClick={close} 
             variant="subtle"
             radius="sm"
             color="pink.4"
-            style={{
-              border: '1px solid var(--border-color)'
-            }}
+            className={styles.socialIcon}
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -227,15 +162,7 @@ export function Navbar() {
               fw={500}
               size="xl"
               onClick={close}
-              style={{
-                textAlign: 'center',
-                width: '100%',
-                fontFamily: "var(--font-playfair)",
-                fontSize: '1.4rem',
-                fontStyle: 'italic',
-                color: 'var(--text-color)',
-                transition: 'all 0.3s ease'
-              }}
+              className={styles.drawerLink}
             >
               {link.label}
             </Text>
@@ -249,18 +176,12 @@ export function Navbar() {
             fullWidth
             mt="xl"
             onClick={close}
-            style={{
-              fontFamily: "var(--font-lato)",
-              textTransform: 'uppercase',
-              letterSpacing: '1px',
-              border: '1px solid var(--primary-pink-dark)',
-              maxWidth: '250px'
-            }}
+            className={styles.drawerButton}
           >
             Book Now
           </Button>
 
-          <Center style={{ width: '100%', marginTop: '2.5rem' }}>
+          <Center className={styles.drawerSocial}>
             <Group gap={30}>
               <ActionIcon 
                 size="xl" 
@@ -271,9 +192,7 @@ export function Navbar() {
                 href={process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/andiee.orozco2/"}
                 target="_blank"
                 aria-label="Instagram"
-                style={{
-                  border: '1px solid var(--border-color)'
-                }}
+                className={styles.drawerSocialIcon}
               >
                 <FaInstagram size={26} />
               </ActionIcon>
@@ -286,16 +205,14 @@ export function Navbar() {
                 href={process.env.NEXT_PUBLIC_TIKTOK_URL || "https://www.tiktok.com/@andieorozco4"}
                 target="_blank"
                 aria-label="TikTok"
-                style={{
-                  border: '1px solid var(--border-color)'
-                }}
+                className={styles.drawerSocialIcon}
               >
                 <FaTiktok size={24} />
               </ActionIcon>
             </Group>
           </Center>
           
-          <span className="decorative-flourish" style={{ marginTop: '2rem' }}>✿</span>
+          <span className={`decorative-flourish ${styles.decorativeFlourish}`}>✿</span>
         </Stack>
       </Drawer>
     </Box>

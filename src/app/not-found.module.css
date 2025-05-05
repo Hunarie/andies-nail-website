@@ -1,0 +1,42 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.errorCode {
+  font-family: var(--font-playfair), serif;
+  font-size: 3rem;
+  color: var(--primary-pink-dark);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-playfair), serif;
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.text {
+  font-family: var(--font-lato), sans-serif;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.button {
+  font-family: var(--font-lato), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--primary-pink-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.decorativeFlourish {
+  margin-top: 2rem;
+  font-size: 2rem;
+} 
