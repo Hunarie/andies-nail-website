@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Container, Text, TextInput, Textarea, Button, Group, Box, SimpleGrid, Stack, Paper, Alert } from '@mantine/core';
 import { TbPhone, TbMail, TbCheck, TbX } from 'react-icons/tb';
 import { SectionTitle } from '@/components/ui/SectionTitle';
+import styles from './Contact.module.css';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -63,47 +64,18 @@ export function Contact() {
     <Box 
       id="contact" 
       component="section"
-      style={{ 
-        backgroundColor: 'var(--background)',
-        padding: 'var(--section-padding)',
-        position: 'relative',
-        overflow: 'hidden' 
-      }}
+      className={styles.contactSection}
     >
       {/* Decorative elements */}
-      <div 
-        style={{
-          position: 'absolute', 
-          top: 50, 
-          right: 80, 
-          width: 200, 
-          height: 200, 
-          borderRadius: '50%', 
-          background: 'var(--primary-pink-light)', 
-          opacity: 0.4,
-          zIndex: 1
-        }}
-      />
-      <div 
-        style={{
-          position: 'absolute', 
-          bottom: 120, 
-          left: 40, 
-          width: 150, 
-          height: 150, 
-          borderRadius: '50%', 
-          background: 'var(--primary-pink-light)', 
-          opacity: 0.3,
-          zIndex: 1
-        }}
-      />
+      <div className={styles.decorativeCircleTop} />
+      <div className={styles.decorativeCircleBottom} />
 
-      <Container size="xl" style={{ position: 'relative', zIndex: 2 }}>
+      <Container size="xl" className={styles.container}>
         <SectionTitle>Get in Touch</SectionTitle>
 
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing={50}>
           <div>
-            <Text size="lg" mb="md" style={{ color: 'var(--text-color)', fontFamily: "var(--font-lato), sans-serif" }}>
+            <Text size="lg" mb="md" className={styles.descriptionText}>
               Have a question or want to book an appointment? Fill out the form below and I&apos;ll get back to you as soon as possible.
             </Text>
 
@@ -145,6 +117,10 @@ export function Contact() {
                     '&:focus': { borderColor: 'var(--primary-pink)' }
                   }
                 }}
+                classNames={{
+                  label: styles.formLabel,
+                  input: styles.formInput
+                }}
               />
               
               <TextInput
@@ -155,12 +131,9 @@ export function Contact() {
                 placeholder="your.email@example.com"
                 required
                 mb="md"
-                styles={{
-                  label: { fontFamily: "var(--font-lato), sans-serif" },
-                  input: { 
-                    borderColor: 'var(--border-color)',
-                    '&:focus': { borderColor: 'var(--primary-pink)' }
-                  }
+                classNames={{
+                  label: styles.formLabel,
+                  input: styles.formInput
                 }}
               />
               
@@ -171,12 +144,9 @@ export function Contact() {
                 label="Phone"
                 placeholder="(555) 123-4567"
                 mb="md"
-                styles={{
-                  label: { fontFamily: "var(--font-lato), sans-serif" },
-                  input: { 
-                    borderColor: 'var(--border-color)',
-                    '&:focus': { borderColor: 'var(--primary-pink)' }
-                  }
+                classNames={{
+                  label: styles.formLabel,
+                  input: styles.formInput
                 }}
               />
               
@@ -189,12 +159,9 @@ export function Contact() {
                 required
                 minRows={4}
                 mb="xl"
-                styles={{
-                  label: { fontFamily: "var(--font-lato), sans-serif" },
-                  input: { 
-                    borderColor: 'var(--border-color)',
-                    '&:focus': { borderColor: 'var(--primary-pink)' }
-                  }
+                classNames={{
+                  label: styles.formLabel,
+                  input: styles.formInput
                 }}
               />
               
@@ -203,22 +170,7 @@ export function Contact() {
                 radius="md" 
                 size="md"
                 loading={isSubmitting}
-                style={{
-                  backgroundColor: 'var(--primary-pink)',
-                  color: 'white',
-                  fontFamily: "var(--font-lato), sans-serif",
-                  transition: 'all 0.3s ease',
-                  border: 'none',
-                  letterSpacing: '0.5px',
-                  fontWeight: 500
-                }}
-                styles={{
-                  root: {
-                    '&:hover': {
-                      backgroundColor: 'var(--primary-pink-dark)'
-                    }
-                  }
-                }}
+                className={styles.submitButton}
               >
                 Send Message
               </Button>
@@ -233,22 +185,15 @@ export function Contact() {
                   p="lg" 
                   radius="md" 
                   withBorder
-                  style={{
-                    borderColor: 'var(--border-color)',
-                    backgroundColor: '#fff7f9',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-3px)'
-                    }
-                  }}
+                  className={styles.contactCard}
                 >
                   <Group wrap="nowrap" align="flex-start">
-                    <Box mt={4} style={{ color: 'var(--primary-pink-dark)' }}>
+                    <Box mt={4} className={styles.iconColor}>
                       {item.icon}
                     </Box>
                     <div>
-                      <Text fw={600} size="md" mb={5} style={{ fontFamily: "var(--font-lato), sans-serif", color: 'var(--text-color)' }}>{item.title}</Text>
-                      <Text size="sm" style={{ fontFamily: "var(--font-lato), sans-serif", color: 'var(--text-color)' }}>{item.description}</Text>
+                      <Text fw={600} size="md" mb={5} className={styles.cardTitle}>{item.title}</Text>
+                      <Text size="sm" className={styles.cardText}>{item.description}</Text>
                     </div>
                   </Group>
                 </Paper>
@@ -260,15 +205,12 @@ export function Contact() {
               p="xl" 
               mt="xl" 
               radius="md"
-              style={{
-                borderColor: 'var(--border-color)',
-                backgroundColor: '#fff7f9'
-              }}
+              className={styles.socialCard}
             >
-              <Text fw={600} size="lg" mb="md" style={{ fontFamily: "var(--font-playfair), serif", color: 'var(--text-color)' }}>
+              <Text fw={600} size="lg" mb="md" className={styles.socialTitle}>
                 Follow On Social Media
               </Text>
-              <Text size="sm" mb="xl" style={{ fontFamily: "var(--font-lato), sans-serif", color: 'var(--text-color)' }}>
+              <Text size="sm" mb="xl" className={styles.socialText}>
                 Follow me on social media to stay updated on my journey &lt;3.
               </Text>
               <Group>
@@ -278,21 +220,7 @@ export function Contact() {
                   target="_blank"
                   variant="outline" 
                   radius="xl"
-                  style={{
-                    borderColor: 'var(--primary-pink)',
-                    color: 'var(--primary-pink-dark)',
-                    fontFamily: "var(--font-lato), sans-serif",
-                    transition: 'all 0.3s ease'
-                  }}
-                  styles={{
-                    root: {
-                      '&:hover': {
-                        backgroundColor: 'var(--primary-pink-light)',
-                        borderColor: 'var(--primary-pink-dark)',
-                        color: 'var(--primary-pink-dark)'
-                      }
-                    }
-                  }}
+                  className={styles.socialButton}
                 >
                   Instagram
                 </Button>
@@ -302,21 +230,7 @@ export function Contact() {
                   target="_blank"
                   variant="outline" 
                   radius="xl"
-                  style={{
-                    borderColor: 'var(--primary-pink)',
-                    color: 'var(--primary-pink-dark)',
-                    fontFamily: "var(--font-lato), sans-serif",
-                    transition: 'all 0.3s ease'
-                  }}
-                  styles={{
-                    root: {
-                      '&:hover': {
-                        backgroundColor: 'var(--primary-pink-light)',
-                        borderColor: 'var(--primary-pink-dark)',
-                        color: 'var(--primary-pink-dark)'
-                      }
-                    }
-                  }}
+                  className={styles.socialButton}
                 >
                   TikTok
                 </Button>

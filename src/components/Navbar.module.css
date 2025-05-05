@@ -1,0 +1,199 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.03);
+  padding-top: var(--mantine-spacing-xs);
+  padding-bottom: var(--mantine-spacing-xs);
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+}
+
+.navbarContainer {
+  max-width: var(--mantine-breakpoint-lg);
+}
+
+.navbarGroup {
+  height: 70px;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-playfair);
+  font-size: clamp(28px, 5vw, 44px);
+  color: var(--primary-pink-dark);
+  letter-spacing: 0.5px;
+  position: relative;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.logoUnderline {
+  position: absolute;
+  bottom: -2px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-pink-light), transparent);
+}
+
+.navLinksGroup {
+  gap: 34px;
+}
+
+.navLink {
+  transition: all 0.3s ease;
+  font-family: var(--font-cormorant);
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--mantine-color-dark-6);
+}
+
+.navLink:hover {
+  color: var(--primary-pink-dark);
+  text-decoration: none;
+}
+
+.navButton {
+  font-family: var(--font-lato);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+  border: 1px solid var(--primary-pink-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  color: var(--mantine-color-pink-4);
+  border-radius: var(--mantine-radius-sm);
+}
+
+.socialsGroup {
+  gap: 16px;
+}
+
+.socialIcon {
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  size: large;
+  color: var(--mantine-color-pink-4);
+  border-radius: var(--mantine-radius-sm);
+}
+
+.socialIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.mobileBurger {
+  color: var(--primary-pink-dark);
+}
+
+/* Drawer styles */
+.drawer {
+  background-color: var(--background);
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f7c8d2' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='2'/%3E%3Ccircle cx='13' cy='13' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  padding: var(--mantine-spacing-xl);
+  width: 100%;
+  position: fixed;
+  right: 0;
+}
+
+.drawerHeader {
+  width: 100%;
+  position: relative;
+  background-color: var(--header-bg);
+  min-height: 70px;
+  padding: 15px 15px 15px 25px;
+}
+
+.drawerTitle {
+  width: 100%;
+  background-color: var(--header-bg);
+  padding: 0;
+}
+
+.drawerLogo {
+  color: var(--primary-pink-dark);
+  font-family: var(--font-playfair);
+  font-size: 30px;
+  position: relative;
+  font-style: italic;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 80%;
+  font-weight: 600;
+}
+
+.drawerLogoUnderline {
+  position: absolute;
+  bottom: -4px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-pink-light), transparent);
+}
+
+.drawerCloseButton {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 1000;
+}
+
+.drawerStack {
+  gap: var(--mantine-spacing-lg);
+  margin-top: var(--mantine-spacing-xl);
+  padding-top: var(--mantine-spacing-md);
+  align-items: center;
+}
+
+.drawerLink {
+  text-align: center;
+  width: 100%;
+  font-family: var(--font-playfair);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.drawerButton {
+  font-family: var(--font-lato);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--primary-pink-dark);
+  max-width: 250px;
+  color: var(--mantine-color-pink-4);
+  border-radius: var(--mantine-radius-sm);
+  margin-top: var(--mantine-spacing-xl);
+  width: 100%;
+}
+
+.drawerSocial {
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+.drawerSocialsGroup {
+  gap: 30px;
+}
+
+.drawerSocialIcon {
+  border: 1px solid var(--border-color);
+  size: extra-large;
+  color: var(--mantine-color-pink-4);
+  border-radius: var(--mantine-radius-sm);
+}
+
+.drawerSocialIcon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.decorativeFlourish {
+  margin-top: 2rem;
+} 

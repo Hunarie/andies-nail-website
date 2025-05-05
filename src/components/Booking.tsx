@@ -4,6 +4,7 @@ import { Container, Text, Button, Box, Center } from '@mantine/core';
 import { useState, useCallback, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { SectionTitle } from '@/components/ui/SectionTitle';
+import styles from './Booking.module.css';
 
 // Dynamically import Calendly components with no SSR
 const PopupModal = dynamic(
@@ -30,27 +31,15 @@ export function Booking() {
     <Box 
       id="book" 
       component="section"
-      style={{ 
-        backgroundColor: 'var(--hero-bg)',
-        textAlign: 'center',
-        position: 'relative',
-        overflow: 'hidden'
-      }}
+      className={styles.bookingSection}
     >
       <Container size="xl">
         <span className="decorative-flourish">♡</span>
         
         <SectionTitle>Book Your Appointment</SectionTitle>
         
-        <Box className="decorative-border" maw={800} mx="auto" py={30} px={40} mb={40} style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.7)',
-          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.03)'
-        }}>
-          <Text size="xl" mx="auto" mb={30} style={{ 
-            fontFamily: "var(--font-cormorant), serif", 
-            fontSize: '1.4rem',
-            lineHeight: 1.6
-          }}>
+        <Box className={`decorative-border ${styles.bookingCard}`} maw={800} mx="auto" py={30} px={40} mb={40}>
+          <Text size="xl" mx="auto" mb={30} className={styles.bookingText}>
             Schedule your appointment now using my online booking system. 
             Choose the service, date, and time that works best for you.
           </Text>
@@ -61,15 +50,7 @@ export function Booking() {
               radius="sm" 
               color="pink.4"
               onClick={openCalendly}
-              style={{
-                fontFamily: "var(--font-lato), sans-serif",
-                textTransform: 'uppercase',
-                letterSpacing: '1px',
-                border: '1px solid var(--primary-pink-dark)',
-                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.05)',
-                padding: '0 2rem',
-                height: '3rem'
-              }}
+              className={styles.bookButton}
             >
               Schedule Now
             </Button>

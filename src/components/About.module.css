@@ -1,0 +1,82 @@
+.aboutSection {
+  background-color: var(--header-bg);
+  padding: var(--section-padding); 
+  position: relative;
+  overflow: hidden;
+}
+
+.decorativeCircleTop {
+  position: absolute; 
+  top: -30px; 
+  left: 100px; 
+  width: 180px; 
+  height: 180px; 
+  border-radius: 50%; 
+  background: var(--primary-pink-light); 
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.decorativeCircleBottom {
+  position: absolute; 
+  bottom: 50px; 
+  right: 80px; 
+  width: 120px; 
+  height: 120px; 
+  border-radius: 50%; 
+  background: var(--primary-pink-light); 
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+.imageWrapper {
+  position: relative;
+  padding-bottom: 30px;
+  padding-right: 30px;
+}
+
+.imageBorder {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 0;
+  bottom: 0;
+  border: 1px solid var(--primary-pink-light);
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.imageContainer {
+  position: relative;
+  aspect-ratio: 3/4;
+  z-index: 2;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.nameTitle {
+  font-family: var(--font-playfair), serif;
+  color: var(--primary-pink-dark);
+}
+
+.textParagraph {
+  font-family: var(--font-lato), sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.signature {
+  font-family: var(--font-lato), sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  opacity: 0.4;
+} 

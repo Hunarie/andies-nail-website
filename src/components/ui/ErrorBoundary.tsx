@@ -3,6 +3,7 @@
 import { Box, Text, Button, Title, Container } from '@mantine/core';
 import { ErrorBoundary as ReactErrorBoundary, FallbackProps } from 'react-error-boundary';
 import React from 'react';
+import styles from './ErrorBoundary.module.css';
 
 interface CustomErrorBoundaryProps {
   children: React.ReactNode;
@@ -13,28 +14,18 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
     <Box
       p="xl"
-      style={{
-        textAlign: 'center',
-        backgroundColor: 'var(--background)',
-        borderRadius: '4px',
-        border: '1px solid var(--border-color)',
-        padding: '2rem',
-        margin: '1rem 0',
-      }}
+      className={styles.errorContainer}
     >
       <Container size="sm">
         <Title
           order={3}
           mb="md"
-          style={{ 
-            fontFamily: "var(--font-playfair), serif",
-            color: 'var(--primary-pink-dark)'
-          }}
+          className={styles.errorTitle}
         >
           Something went wrong
         </Title>
         
-        <Text mb="lg" style={{ fontFamily: "var(--font-lato), sans-serif" }}>
+        <Text mb="lg" className={styles.errorText}>
           {error.message || "We're sorry, but there was an error loading this content."}
         </Text>
         
@@ -42,9 +33,7 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
           onClick={resetErrorBoundary}
           variant="filled"
           color="pink.4"
-          style={{
-            fontFamily: "var(--font-lato), sans-serif",
-          }}
+          className={styles.errorButton}
         >
           Try Again
         </Button>
