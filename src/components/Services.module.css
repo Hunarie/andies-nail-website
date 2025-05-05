@@ -1,0 +1,109 @@
+.servicesSection {
+  background-color: var(--background);
+  padding: var(--section-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+.decorativeCircleTop {
+  position: absolute;
+  right: 5%;
+  top: 15%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--primary-pink-light);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.decorativeCircleBottom {
+  position: absolute;
+  left: 10%;
+  bottom: 10%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--primary-pink-light);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.serviceCard {
+  border-color: var(--border-color);
+  border-width: 1px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff;
+  height: 100%;
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(247, 200, 210, 0.2);
+}
+
+.imageContainer {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.imagePlaceholder {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFC1E0;
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: var(--font-lato), sans-serif;
+}
+
+.imageBorder {
+  position: absolute;
+  inset: 0;
+  border-bottom: 4px solid var(--primary-pink);
+  opacity: 0.7;
+}
+
+.serviceTitle {
+  font-family: var(--font-playfair), serif;
+  color: var(--text-color);
+}
+
+.priceBadge {
+  background-color: var(--primary-pink-light);
+  color: var(--text-color);
+  font-family: var(--font-lato), sans-serif;
+  border: 1px solid var(--primary-pink);
+  padding: 4px 12px 6px;
+  line-height: 1.4;
+  display: inline-flex;
+  align-items: center;
+  height: auto;
+  text-transform: none;
+}
+
+.serviceDescription {
+  font-family: var(--font-lato), sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.durationBadge {
+  border-color: var(--accent-gold);
+  color: var(--text-color);
+  font-family: var(--font-lato), sans-serif;
+  padding: 4px 12px 6px;
+  line-height: 1.4;
+  display: inline-flex;
+  align-items: center;
+  height: auto;
+  text-transform: none;
+} 

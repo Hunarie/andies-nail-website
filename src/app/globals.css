@@ -56,6 +56,7 @@ p, span, div, li, label, input, textarea {
   line-height: 1.6;
 }
 
+/* Global Mantine components styling */
 .mantine-Button-root {
   font-family: var(--font-lato), sans-serif;
   text-transform: uppercase;
@@ -82,72 +83,7 @@ p, span, div, li, label, input, textarea {
   vertical-align: middle;
 }
 
-/* Remove any padding from carousel slides */
-.mantine-Carousel-slide {
-  padding: 0 !important;
-  background-color: transparent !important;
-}
-
-.carousel-caption {
-  color: white !important;
-}
-
-.hero-carousel-slide {
-  position: relative;
-  height: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--border-color);
-  max-width: 100%;
-  margin: 0 auto;
-  aspect-ratio: 3/4;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-  pointer-events: none; /* Disable hover interactions on all devices */
-}
-
-.hero-carousel-image {
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 8px;
-  transition: transform 0.5s ease;
-  pointer-events: none; /* Disable touch interactions on all devices */
-}
-
-/* Remove hover effects completely */
-.hero-carousel-slide:hover {
-  transform: none;
-}
-
-.hero-carousel-slide:hover .hero-carousel-image {
-  transform: none;
-}
-
-.hero-content {
-  gap: 2.5rem;
-  margin-bottom: 3.5rem;
-}
-
-.hero-description {
-  font-size: 1.3rem;
-}
-
-.hero-button {
-  height: 3rem !important;
-}
-
-.hero-decorative-element {
-  display: block;
-}
-
-.hero-title {
-  color: var(--primary-pink-dark) !important;
-  font-family: var(--font-playfair), serif;
-  letter-spacing: 0.02em;
-  font-weight: 600;
-  font-style: italic;
-  font-size: 3.2rem;
-}
-
+/* Global link styles */
 a {
   color: inherit;
   text-decoration: none;
@@ -158,6 +94,7 @@ a:hover {
   color: var(--primary-pink-dark);
 }
 
+/* Global section styling */
 section {
   padding: var(--section-padding);
   position: relative;
@@ -173,27 +110,7 @@ section::before {
   background: linear-gradient(90deg, transparent, var(--border-color), transparent);
 }
 
-.section-title {
-  position: relative;
-  font-size: 2.2rem;
-  text-align: center;
-  margin-bottom: 2.5rem;
-  font-family: var(--font-playfair), serif;
-  font-weight: 500;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 2px;
-  background-color: var(--primary-pink);
-}
-
-/* Add decorative elements */
+/* Global decorative elements */
 .decorative-flourish {
   display: block;
   text-align: center;
@@ -208,7 +125,7 @@ section::before {
   padding: 1.5rem;
 }
 
-/* Button styles */
+/* Global button styles */
 button, .button {
   background-color: var(--primary-pink);
   color: var(--text-color);
@@ -226,7 +143,7 @@ button:hover, .button:hover {
   background-color: var(--primary-pink-dark);
 }
 
-/* Input styles */
+/* Global input styles */
 input, textarea, select {
   border: 1px solid var(--border-color);
   padding: 12px;
@@ -240,73 +157,14 @@ input:focus, textarea:focus, select:focus {
   outline: none;
 }
 
+/* Global media queries */
 @media (max-width: 768px) {
   :root {
     --section-padding: 3rem 1rem;
   }
   
-  .section-title {
-    font-size: 1.75rem;
-  }
-  
   p, span, div, li, label, input, textarea {
     font-size: 1rem;
-  }
-  
-  .hero-carousel-slide {
-    max-width: 280px;
-    aspect-ratio: 3/4;
-    border-radius: 6px;
-    border: none;
-    margin: 0 auto;
-    pointer-events: none; /* Disable touch interactions on slide container */
-  }
-  
-  .mantine-Carousel-root {
-    box-shadow: none !important;
-  }
-  
-  .mantine-Carousel-slide {
-    padding-bottom: 5px;
-  }
-  
-  .mantine-Carousel-indicators {
-    bottom: -25px !important;
-  }
-  
-  .mantine-Carousel-slide[data-active] {
-    opacity: 1;
-  }
-  
-  .hero-carousel-image {
-    border-radius: 6px;
-    pointer-events: none; /* Disable touch interactions */
-  }
-  
-  .carousel-caption {
-    font-size: 1.25rem !important;
-    padding: 20px 15px !important;
-  }
-  
-  .hero-title {
-    font-size: 2.2rem !important;
-  }
-  
-  .hero-description {
-    font-size: 1.1rem;
-  }
-  
-  .hero-content {
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .hero-button {
-    height: 2.5rem !important;
-  }
-  
-  .hero-decorative-element {
-    display: none;
   }
 }
 

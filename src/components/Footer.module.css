@@ -1,0 +1,42 @@
+.footer {
+  background-color: var(--hero-bg);
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.mobileContainer {
+  overflow: hidden;
+}
+
+.mobileLogo {
+  color: var(--primary-pink-dark);
+  font-size: 1rem;
+  font-family: var(--font-playfair), serif;
+  font-style: italic;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mobileText {
+  color: var(--foreground);
+  font-family: var(--font-lato), sans-serif;
+  white-space: nowrap;
+  font-size: 0.7rem;
+}
+
+.desktopLogo {
+  color: var(--primary-pink-dark);
+  font-size: 1.5rem;
+  margin-right: 10px;
+  font-family: var(--font-playfair), serif;
+  font-style: italic;
+}
+
+.desktopText {
+  color: var(--foreground);
+  font-family: var(--font-lato), sans-serif;
+}
+
+.socialIcon {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+} 

@@ -1,0 +1,19 @@
+.sectionTitle {
+  font-family: var(--font-playfair), serif;
+  font-size: 2.5rem;
+  color: var(--text-color);
+  position: relative;
+  display: inline-block;
+  padding: 0 15px;
+}
+
+.titleUnderline {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: var(--primary-pink);
+  border-radius: 2px;
+} 

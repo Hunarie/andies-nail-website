@@ -5,6 +5,7 @@ import NextImage from 'next/image';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { useState } from 'react';
 import { CustomErrorBoundary } from '@/components/ui/ErrorBoundary';
+import styles from './Services.module.css';
 
 const services = [
   {
@@ -70,20 +71,10 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
       padding="lg" 
       radius="md" 
       withBorder
-      style={{
-        borderColor: 'var(--border-color)',
-        borderWidth: '1px',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-        backgroundColor: '#ffffff',
-        height: '100%',
-        ':hover': {
-          transform: 'translateY(-5px)',
-          boxShadow: '0 10px 30px rgba(247, 200, 210, 0.2)'
-        }
-      }}
+      className={styles.serviceCard}
     >
       <Card.Section>
-        <div style={{ position: 'relative', height: '200px', overflow: 'hidden' }}>
+        <div className={styles.imageContainer}>
           {!imageError ? (
             <NextImage
               src={service.image}
@@ -94,28 +85,11 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
               onError={handleImageError}
             />
           ) : (
-            <div
-              style={{
-                height: '100%',
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: '#FFC1E0',
-                color: '#fff',
-                fontSize: '1.2rem',
-                fontFamily: 'var(--font-lato), sans-serif'
-              }}
-            >
+            <div className={styles.imagePlaceholder}>
               {service.title}
             </div>
           )}
-          <div style={{ 
-            position: 'absolute', 
-            inset: 0, 
-            borderBottom: '4px solid var(--primary-pink)',
-            opacity: 0.7 
-          }} />
+          <div className={styles.imageBorder} />
         </div>
       </Card.Section>
 
@@ -123,26 +97,12 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
         <Text 
           fw={600} 
           size="lg"
-          style={{
-            fontFamily: 'var(--font-playfair), serif',
-            color: 'var(--text-color)'
-          }}
+          className={styles.serviceTitle}
         >
           {service.title}
         </Text>
         <Badge 
-          style={{
-            backgroundColor: 'var(--primary-pink-light)',
-            color: 'var(--text-color)',
-            fontFamily: 'var(--font-lato), sans-serif',
-            border: '1px solid var(--primary-pink)',
-            padding: '4px 12px 6px',
-            lineHeight: '1.4',
-            display: 'inline-flex',
-            alignItems: 'center',
-            height: 'auto',
-            textTransform: 'none'
-          }}
+          className={styles.priceBadge}
           size="lg"
         >
           {service.price}
@@ -151,11 +111,7 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
 
       <Text 
         size="sm"
-        style={{
-          fontFamily: 'var(--font-lato), sans-serif',
-          lineHeight: 1.6,
-          color: 'var(--text-color)'
-        }}
+        className={styles.serviceDescription}
       >
         {service.description}
       </Text>
@@ -163,17 +119,7 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
       <Group mt="sm">
         <Badge 
           variant="outline"
-          style={{
-            borderColor: 'var(--accent-gold)',
-            color: 'var(--text-color)',
-            fontFamily: 'var(--font-lato), sans-serif',
-            padding: '4px 12px 6px',
-            lineHeight: '1.4',
-            display: 'inline-flex',
-            alignItems: 'center',
-            height: 'auto',
-            textTransform: 'none'
-          }}
+          className={styles.durationBadge}
         >
           {service.duration}
         </Badge>
@@ -187,42 +133,13 @@ export function Services() {
     <Box 
       id="services" 
       component="section" 
-      style={{ 
-        backgroundColor: 'var(--background)',
-        padding: 'var(--section-padding)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}
+      className={styles.servicesSection}
     >
       {/* Decorative elements */}
-      <div 
-        style={{
-          position: 'absolute', 
-          right: '5%', 
-          top: '15%',
-          width: '120px',
-          height: '120px',
-          borderRadius: '50%',
-          background: 'var(--primary-pink-light)',
-          opacity: 0.4,
-          zIndex: 0
-        }}
-      />
-      <div 
-        style={{
-          position: 'absolute', 
-          left: '10%', 
-          bottom: '10%',
-          width: '80px',
-          height: '80px',
-          borderRadius: '50%',
-          background: 'var(--primary-pink-light)',
-          opacity: 0.3,
-          zIndex: 0
-        }}
-      />
+      <div className={styles.decorativeCircleTop} />
+      <div className={styles.decorativeCircleBottom} />
       
-      <Container size="xl" style={{ position: 'relative', zIndex: 1 }}>
+      <Container size="xl" className={styles.container}>
         <Center>
           <SectionTitle>My Services</SectionTitle>
         </Center>
