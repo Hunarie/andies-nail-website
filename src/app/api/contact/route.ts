@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Validate the data
-    if (!body.email || !body.name || !body.message) {
+    if (!body.email || !body.name || !body.message || !body.phone) {
       return NextResponse.json(
         { message: 'Missing required fields' },
         { status: 400 }
@@ -31,11 +31,12 @@ export async function POST(request: NextRequest) {
       to: process.env.EMAIL_TO || 'recipient@example.com',
       replyTo: body.email,
       subject: `Contact Form: Message from ${body.name}`,
-      text: `Name: ${body.name}\nEmail: ${body.email}\nMessage: ${body.message}`,
+      text: `Name: ${body.name}\nEmail: ${body.email}\nPhone: ${body.phone}\nMessage: ${body.message}`,
       html: `
         <h3>New Contact Form Submission</h3>
         <p><strong>Name:</strong> ${body.name}</p>
         <p><strong>Email:</strong> ${body.email}</p>
+        <p><strong>Phone:</strong> ${body.phone}</p>
         <p><strong>Message:</strong> ${body.message}</p>
       `,
     };
