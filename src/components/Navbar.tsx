@@ -26,6 +26,7 @@ const navLinks = [
 
 export function Navbar() {
   const [opened, { toggle, close }] = useDisclosure(false);
+  const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails";
 
   return (
     <Box 
@@ -34,7 +35,7 @@ export function Navbar() {
       <Container className={styles.navbarContainer}>
         <Group className={styles.navbarGroup}>
           <Text className={styles.logo} component="div">
-            {process.env.NEXT_PUBLIC_SITE_NAME}
+            {siteName}
             {/* Decorative underline */}
             <div className={styles.logoUnderline} />
           </Text>

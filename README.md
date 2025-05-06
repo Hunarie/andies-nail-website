@@ -2,28 +2,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, set up your environment variables:
-
-1. Create a `.env.local` file in the root directory with the following variables:
-
-```bash
-# Site metadata
-NEXT_PUBLIC_SITE_NAME="Andie Orozco's Nails"
-NEXT_PUBLIC_SITE_DESCRIPTION="Professional nail services by Andie Orozco"
-
-# Contact information
-NEXT_PUBLIC_CONTACT_EMAIL=andieorozco2006@gmail.com
-NEXT_PUBLIC_CONTACT_PHONE=(616) 734-7308
-
-# Social media
-NEXT_PUBLIC_INSTAGRAM_URL=https://www.instagram.com/andiee.orozco2/
-NEXT_PUBLIC_TIKTOK_URL=https://www.tiktok.com/@andieorozco4
-
-# Calendly booking
-NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/your-calendly-username
-```
-
-2. Run the development server:
+1. Run the development server:
 
 ```bash
 npm run dev

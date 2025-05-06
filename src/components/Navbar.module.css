@@ -19,16 +19,20 @@
 .navbarGroup {
   height: 70px;
   justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
 .logo {
   font-family: var(--font-playfair);
-  font-size: clamp(28px, 5vw, 44px);
+  font-size: clamp(24px, 4vw, 40px);
   color: var(--primary-pink-dark);
   letter-spacing: 0.5px;
   position: relative;
   font-style: italic;
   font-weight: 600;
+  min-width: 0;
+  flex-shrink: 1;
+  margin-right: 8px;
 }
 
 .logoUnderline {
@@ -89,6 +93,8 @@
 
 .mobileBurger {
   color: var(--primary-pink-dark);
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 /* Drawer styles */
