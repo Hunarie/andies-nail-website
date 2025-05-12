@@ -61,7 +61,7 @@ export function Booking() {
         
         {rootElement && (
           <PopupModal
-            url="https://calendly.com/jleeman2000"
+            url="https://calendly.com/andieorozco2006"
             onModalClose={closeCalendly}
             open={isOpen}
             rootElement={rootElement}
