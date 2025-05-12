@@ -6,6 +6,11 @@ import { TbPhone, TbMail, TbCheck, TbX } from 'react-icons/tb';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import styles from './Contact.module.css';
 
+// Email validation regex
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+// Phone validation regex (supports formats like (555) 123-4567, 555-123-4567, 5551234567)
+const PHONE_REGEX = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+
 export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -13,24 +18,85 @@ export function Contact() {
     phone: '',
     message: ''
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+
+  const validateInput = (name: string, value: string): string => {
+    switch (name) {
+      case 'name':
+        return value.trim() ? '' : 'Name is required';
+      case 'email':
+        if (!value.trim()) return 'Email is required';
+        return EMAIL_REGEX.test(value) ? '' : 'Please enter a valid email address';
+      case 'phone':
+        // Phone is optional, but if provided must be valid
+        return value.trim() && !PHONE_REGEX.test(value) ? 'Please enter a valid phone number' : '';
+      case 'message':
+        return value.trim() ? '' : 'Message is required';
+      default:
+        return '';
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Validate on change and update errors
+    const error = validateInput(name, value);
+    setErrors(prev => ({
+      ...prev,
+      [name]: error
+    }));
+  };
+
+  // Sanitize inputs to prevent XSS
+  const sanitizeInput = (input: string): string => {
+    return input
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate all fields
+    const newErrors: Record<string, string> = {};
+    let hasErrors = false;
+    
+    Object.entries(formData).forEach(([name, value]) => {
+      const error = validateInput(name, value);
+      if (error) {
+        newErrors[name] = error;
+        hasErrors = true;
+      }
+    });
+    
+    setErrors(newErrors);
+    
+    if (hasErrors) {
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus(null);
+    
+    // Create sanitized version of data for submission
+    const sanitizedData = {
+      name: sanitizeInput(formData.name.trim()),
+      email: sanitizeInput(formData.email.trim()),
+      phone: sanitizeInput(formData.phone.trim()),
+      message: sanitizeInput(formData.message.trim())
+    };
     
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(sanitizedData)
       });
       
       if (response.ok) {
@@ -110,6 +176,7 @@ export function Contact() {
                 placeholder="Your name"
                 required
                 mb="md"
+                error={errors.name}
                 styles={{
                   label: { fontFamily: "var(--font-lato), sans-serif" },
                   input: { 
@@ -131,6 +198,7 @@ export function Contact() {
                 placeholder="your.email@example.com"
                 required
                 mb="md"
+                error={errors.email}
                 classNames={{
                   label: styles.formLabel,
                   input: styles.formInput
@@ -144,6 +212,7 @@ export function Contact() {
                 label="Phone"
                 placeholder="(555) 123-4567"
                 mb="md"
+                error={errors.phone}
                 classNames={{
                   label: styles.formLabel,
                   input: styles.formInput
@@ -159,6 +228,7 @@ export function Contact() {
                 required
                 minRows={4}
                 mb="xl"
+                error={errors.message}
                 classNames={{
                   label: styles.formLabel,
                   input: styles.formInput
@@ -171,6 +241,7 @@ export function Contact() {
                 size="md"
                 loading={isSubmitting}
                 className={styles.submitButton}
+                disabled={Object.values(errors).some(error => error)}
               >
                 Send Message
               </Button>

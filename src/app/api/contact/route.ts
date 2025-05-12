@@ -1,6 +1,18 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import nodemailer from 'nodemailer';
+import { RateLimiter } from 'limiter';
+
+// Storage for IP-based rate limiters
+const ipLimiters = new Map<string, RateLimiter>();
+
+// Define contact form data interface
+interface ContactFormData {
+  name: string;
+  email: string;
+  phone?: string;
+  message: string;
+}
 
 // Create a transporter object
 const transporter = nodemailer.createTransport({
@@ -13,14 +25,64 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Helper function to sanitize and validate inputs
+function validateAndSanitizeInput(body: ContactFormData) {
+  // Required fields check
+  if (!body.email || !body.name || !body.message) {
+    return { valid: false, error: 'Missing required fields' };
+  }
+
+  // Email format validation using regex
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailRegex.test(body.email)) {
+    return { valid: false, error: 'Invalid email format' };
+  }
+
+  // Phone validation if provided
+  if (body.phone) {
+    const phoneRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+    if (!phoneRegex.test(body.phone)) {
+      return { valid: false, error: 'Invalid phone number format' };
+    }
+  }
+
+  return { valid: true, error: null };
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    // Get client IP for rate limiting
+    const ip = request.headers.get('x-forwarded-for') || 
+               request.headers.get('x-real-ip') || 
+               'unknown-ip';
     
-    // Validate the data
-    if (!body.email || !body.name || !body.message || !body.phone) {
+    // Create a rate limiter for this IP if it doesn't exist (3 requests per minute)
+    if (!ipLimiters.has(ip)) {
+      ipLimiters.set(ip, new RateLimiter({
+        tokensPerInterval: 3, 
+        interval: 'minute', 
+        fireImmediately: true
+      }));
+    }
+    
+    const limiter = ipLimiters.get(ip)!;
+    
+    // Check if rate limit is exceeded
+    const rateLimitResponse = await limiter.removeTokens(1);
+    if (rateLimitResponse < 0) {
       return NextResponse.json(
-        { message: 'Missing required fields' },
+        { message: 'Rate limit exceeded. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
+    const body = await request.json() as ContactFormData;
+    
+    // Server-side validation
+    const validation = validateAndSanitizeInput(body);
+    if (!validation.valid) {
+      return NextResponse.json(
+        { message: validation.error },
         { status: 400 }
       );
     }
@@ -31,12 +93,12 @@ export async function POST(request: NextRequest) {
       to: process.env.EMAIL_TO || 'recipient@example.com',
       replyTo: body.email,
       subject: `Contact Form: Message from ${body.name}`,
-      text: `Name: ${body.name}\nEmail: ${body.email}\nPhone: ${body.phone}\nMessage: ${body.message}`,
+      text: `Name: ${body.name}\nEmail: ${body.email}\nPhone: ${body.phone || 'Not provided'}\nMessage: ${body.message}`,
       html: `
         <h3>New Contact Form Submission</h3>
         <p><strong>Name:</strong> ${body.name}</p>
         <p><strong>Email:</strong> ${body.email}</p>
-        <p><strong>Phone:</strong> ${body.phone}</p>
+        <p><strong>Phone:</strong> ${body.phone || 'Not provided'}</p>
         <p><strong>Message:</strong> ${body.message}</p>
       `,
     };
