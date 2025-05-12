@@ -3,7 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['placehold.co'], // Allow external image domains
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+      },
+    ],
     formats: ['image/avif', 'image/webp'], // Optimize image formats
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048], // Responsive sizes
     imageSizes: [16, 32, 48, 64, 96, 128, 256], // Image sizes for srcset
@@ -40,6 +45,22 @@ const nextConfig: NextConfig = {
           {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://calendly.com https://*.calendly.com; connect-src 'self' https://calendly.com https://*.calendly.com; img-src 'self' data: https: blob:; style-src 'self' 'unsafe-inline' https: data:; font-src 'self' https: data:; frame-src https://calendly.com https://*.calendly.com;",
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
           },
         ],
       },

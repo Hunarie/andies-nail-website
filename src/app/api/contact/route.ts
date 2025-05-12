@@ -16,12 +16,12 @@ interface ContactFormData {
 
 // Create a transporter object
 const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST || 'smtp.example.com',
+  host: process.env.EMAIL_HOST,
   port: parseInt(process.env.EMAIL_PORT || '587'),
   secure: process.env.EMAIL_SECURE === 'true',
   auth: {
-    user: process.env.EMAIL_USER || '',
-    pass: process.env.EMAIL_PASSWORD || '',
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
@@ -89,8 +89,8 @@ export async function POST(request: NextRequest) {
     
     // Setup email data
     const mailOptions = {
-      from: process.env.EMAIL_FROM || 'your-email@example.com',
-      to: process.env.EMAIL_TO || 'recipient@example.com',
+      from: process.env.EMAIL_FROM,
+      to: process.env.EMAIL_TO,
       replyTo: body.email,
       subject: `Contact Form: Message from ${body.name}`,
       text: `Name: ${body.name}\nEmail: ${body.email}\nPhone: ${body.phone || 'Not provided'}\nMessage: ${body.message}`,

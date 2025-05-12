@@ -106,6 +106,7 @@ const theme = createTheme({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://andieorozconails.com'),
   title: process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails",
   description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "Professional nail services by Andie Orozco",
   keywords: ["nails", "nail salon", "manicure", "pedicure", "nail art", "Andie Orozco"],
