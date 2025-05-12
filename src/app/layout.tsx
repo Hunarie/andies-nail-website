@@ -107,14 +107,14 @@ const theme = createTheme({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://andieorozconails.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.andieorozconails.com'),
   title: process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails",
   description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "Professional nail services by Andie Orozco",
   keywords: ["nails", "nail salon", "manicure", "pedicure", "nail art", "Andie Orozco"],
   openGraph: {
     title: process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails",
     description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "Professional nail services by Andie Orozco",
-    url: "https://andieorozconails.com",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.andieorozconails.com",
     siteName: process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails",
     images: [
       {
