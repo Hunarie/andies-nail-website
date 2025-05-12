@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { MantineProvider, createTheme } from "@mantine/core";
 import { Playfair_Display, Cormorant_Garamond, Lato } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import "./globals.css";
@@ -153,6 +154,7 @@ export default function RootLayout({
         <MantineProvider theme={theme}>
           {children}
           <SpeedInsights />
+          <Analytics />
         </MantineProvider>
       </body>
     </html>
