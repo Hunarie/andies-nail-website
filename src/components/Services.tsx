@@ -6,60 +6,60 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 import { useState } from 'react';
 import { CustomErrorBoundary } from '@/components/ui/ErrorBoundary';
 import styles from './Services.module.css';
+import { useTranslations } from 'next-intl';
 
-const services = [
-  {
-    title: 'Gel-X Short Set',
-    description: 'Soft gel extension system that provides a natural-looking, longer nail. It combines the flexibility of gel polish with the strength of traditional acrylics.',
-    price: 'Starting at $50',
-    duration: 'Approx. 2 hours',
-    image: '/img/gel-x-short-set.jpg',
-    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
-  },
-  {
-    title: 'Gel-X Medium Set',
-    description: 'Soft gel extension system that provides a natural-looking, longer nail. It combines the flexibility of gel polish with the strength of traditional acrylics.',
-    price: 'Starting at $60',
-    duration: 'Approx. 2 hrs 30 min',
-    image: '/img/gel-x-medium-set.jpg',
-    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
-  },
-  {
-    title: 'Gel-X Long Set',
-    description: 'Soft gel extension system that provides a natural-looking, longer nail. It combines the flexibility of gel polish with the strength of traditional acrylics.',
-    price: 'Starting at $70',
-    duration: 'Approx. 2 hrs 50 min',
-    image: '/img/gel-x-long-set.jpg',
-    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
-  },
-  {
-    title: 'Gel-X Removal (Acetone Soak-Off)',
-    description: 'Product removal using an acetone soak and gentle buffing, completed with cuticle care.',
-    price: '$20',
-    duration: 'Approx. 45 min',
-    image: '/img/removal-acetone-soak-off.jpg',
-    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
-  },
-  {
-    title: 'Nail Cleanup',
-    description: 'Light shaping, buffing, and a full cuticle cleanup, finished with cuticle oil and an optional clear top coat.',
-    price: '$30',
-    duration: 'Approx. 45 min',
-    image: '/img/nail-cleanup.jpg',
-    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
-  },
-  {
-    title: 'Gel Manicure',
-    description: 'Full prep, cuticle work, and basic gel polish application, focusing on nail health with minimal damage.',
-    price: '$40',
-    duration: 'Approx. 1 hrs 30 min',
-    image: '/img/gel-manicure.jpg',
-    imagePlaceholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Pedicure'
-  },
+const serviceKeys = [
+  'gelXShort',
+  'gelXMedium',
+  'gelXLong',
+  'gelXRemoval',
+  'nailCleanup',
+  'gelManicure'
 ];
 
-function ServiceCard({ service }: { service: typeof services[0] }) {
+const serviceImages = [
+  {
+    key: 'gelXShort',
+    src: '/img/gel-x-short-set.jpg',
+    alt: 'Gel-X Short Set',
+    placeholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Gel-X+Short'
+  },
+  {
+    key: 'gelXMedium',
+    src: '/img/gel-x-medium-set.jpg',
+    alt: 'Gel-X Medium Set',
+    placeholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Gel-X+Medium'
+  },
+  {
+    key: 'gelXLong',
+    src: '/img/gel-x-long-set.jpg',
+    alt: 'Gel-X Long Set',
+    placeholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Gel-X+Long'
+  },
+  {
+    key: 'gelXRemoval',
+    src: '/img/removal-acetone-soak-off.jpg',
+    alt: 'Gel-X Removal',
+    placeholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Removal'
+  },
+  {
+    key: 'nailCleanup',
+    src: '/img/nail-cleanup.jpg',
+    alt: 'Nail Cleanup',
+    placeholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Cleanup'
+  },
+  {
+    key: 'gelManicure',
+    src: '/img/gel-manicure.jpg',
+    alt: 'Gel Manicure',
+    placeholder: 'https://placehold.co/600x400/FFC1E0/fff?text=Gel+Manicure'
+  }
+];
+
+function ServiceCard({ serviceKey }: { serviceKey: string }) {
+  const t = useTranslations();
   const [imageError, setImageError] = useState(false);
+  const image = serviceImages.find(img => img.key === serviceKey);
 
   const handleImageError = () => {
     setImageError(true);
@@ -75,18 +75,18 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
     >
       <Card.Section>
         <div className={styles.imageContainer}>
-          {!imageError ? (
+          {!imageError && image ? (
             <NextImage
-              src={service.image}
+              src={image.src}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
               style={{ objectFit: 'cover' }}
-              alt={service.title}
+              alt={image.alt}
               onError={handleImageError}
             />
           ) : (
             <div className={styles.imagePlaceholder}>
-              {service.title}
+              {t(`services.items.${serviceKey}.title`)}
             </div>
           )}
           <div className={styles.imageBorder} />
@@ -99,13 +99,13 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
           size="lg"
           className={styles.serviceTitle}
         >
-          {service.title}
+          {t(`services.items.${serviceKey}.title`)}
         </Text>
         <Badge 
           className={styles.priceBadge}
           size="lg"
         >
-          {service.price}
+          {t(`services.items.${serviceKey}.price`)}
         </Badge>
       </Group>
 
@@ -113,7 +113,7 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
         size="sm"
         className={styles.serviceDescription}
       >
-        {service.description}
+        {t(`services.items.${serviceKey}.description`)}
       </Text>
 
       <Group mt="sm">
@@ -121,7 +121,7 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
           variant="outline"
           className={styles.durationBadge}
         >
-          {service.duration}
+          {t(`services.items.${serviceKey}.duration`)}
         </Badge>
       </Group>
     </Card>
@@ -129,6 +129,8 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
 }
 
 export function Services() {
+  const t = useTranslations();
+  
   return (
     <Box 
       id="services" 
@@ -141,14 +143,14 @@ export function Services() {
       
       <Container size="xl" className={styles.container}>
         <Center>
-          <SectionTitle>My Services</SectionTitle>
+          <SectionTitle>{t('services.title')}</SectionTitle>
         </Center>
         
         <CustomErrorBoundary message="Unable to load services. Please try again later.">
           <Grid gutter="xl">
-            {services.map((service, index) => (
+            {serviceKeys.map((serviceKey, index) => (
               <Grid.Col key={index} span={{ base: 12, sm: 6, lg: 4 }}>
-                <ServiceCard service={service} />
+                <ServiceCard serviceKey={serviceKey} />
               </Grid.Col>
             ))}
           </Grid>

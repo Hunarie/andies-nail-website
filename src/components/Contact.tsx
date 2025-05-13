@@ -5,6 +5,7 @@ import { Container, Text, TextInput, Textarea, Button, Group, Box, SimpleGrid, S
 import { TbPhone, TbMail, TbCheck, TbX } from 'react-icons/tb';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import styles from './Contact.module.css';
+import { useTranslations } from 'next-intl';
 
 // Email validation regex
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -12,6 +13,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PHONE_REGEX = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
 
 export function Contact() {
+  const t = useTranslations();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,15 +27,15 @@ export function Contact() {
   const validateInput = (name: string, value: string): string => {
     switch (name) {
       case 'name':
-        return value.trim() ? '' : 'Name is required';
+        return value.trim() ? '' : t('contact.form.name.error');
       case 'email':
-        if (!value.trim()) return 'Email is required';
-        return EMAIL_REGEX.test(value) ? '' : 'Please enter a valid email address';
+        if (!value.trim()) return t('contact.form.email.error.required');
+        return EMAIL_REGEX.test(value) ? '' : t('contact.form.email.error.invalid');
       case 'phone':
         // Phone is optional, but if provided must be valid
-        return value.trim() && !PHONE_REGEX.test(value) ? 'Please enter a valid phone number' : '';
+        return value.trim() && !PHONE_REGEX.test(value) ? t('contact.form.phone.error') : '';
       case 'message':
-        return value.trim() ? '' : 'Message is required';
+        return value.trim() ? '' : t('contact.form.message.error');
       default:
         return '';
     }
@@ -115,12 +117,12 @@ export function Contact() {
 
   const contactInfo = [
     {
-      title: 'Phone',
+      title: t('contact.contactInfo.phone.title'),
       description: process.env.NEXT_PUBLIC_CONTACT_PHONE || '(616) 734-7308',
       icon: <TbPhone size={30} />
     },
     {
-      title: 'Email',
+      title: t('contact.contactInfo.email.title'),
       description: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'andieorozco2006@gmail.com',
       icon: <TbMail size={30} />
     },
@@ -137,33 +139,33 @@ export function Contact() {
       <div className={styles.decorativeCircleBottom} />
 
       <Container size="xl" className={styles.container}>
-        <SectionTitle>Get in Touch</SectionTitle>
+        <SectionTitle>{t('contact.title')}</SectionTitle>
 
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing={50}>
           <div>
             <Text size="lg" mb="md" className={styles.descriptionText}>
-              Have a question or want to book an appointment? Fill out the form below and I&apos;ll get back to you as soon as possible.
+              {t('contact.description')}
             </Text>
 
             {submitStatus === 'success' && (
               <Alert 
                 icon={<TbCheck size={16} />} 
-                title="Message Sent!" 
+                title={t('contact.alerts.success.title')} 
                 color="green" 
                 mb="md"
               >
-                Thank you for your message. I&apos;ll get back to you soon!
+                {t('contact.alerts.success.message')}
               </Alert>
             )}
             
             {submitStatus === 'error' && (
               <Alert 
                 icon={<TbX size={16} />} 
-                title="Error" 
+                title={t('contact.alerts.error.title')} 
                 color="red" 
                 mb="md"
               >
-                There was a problem sending your message. Please try again.
+                {t('contact.alerts.error.message')}
               </Alert>
             )}
 
@@ -172,18 +174,11 @@ export function Contact() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                label="Name"
-                placeholder="Your name"
+                label={t('contact.form.name.label')}
+                placeholder={t('contact.form.name.placeholder')}
                 required
                 mb="md"
                 error={errors.name}
-                styles={{
-                  label: { fontFamily: "var(--font-lato), sans-serif" },
-                  input: { 
-                    borderColor: 'var(--border-color)',
-                    '&:focus': { borderColor: 'var(--primary-pink)' }
-                  }
-                }}
                 classNames={{
                   label: styles.formLabel,
                   input: styles.formInput
@@ -194,8 +189,8 @@ export function Contact() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                label="Email"
-                placeholder="your.email@example.com"
+                label={t('contact.form.email.label')}
+                placeholder={t('contact.form.email.placeholder')}
                 required
                 mb="md"
                 error={errors.email}
@@ -209,8 +204,8 @@ export function Contact() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                label="Phone"
-                placeholder="(555) 123-4567"
+                label={t('contact.form.phone.label')}
+                placeholder={t('contact.form.phone.placeholder')}
                 mb="md"
                 error={errors.phone}
                 classNames={{
@@ -223,8 +218,8 @@ export function Contact() {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                label="Message"
-                placeholder="How can I help you?"
+                label={t('contact.form.message.label')}
+                placeholder={t('contact.form.message.placeholder')}
                 required
                 minRows={4}
                 mb="xl"
@@ -243,7 +238,7 @@ export function Contact() {
                 className={styles.submitButton}
                 disabled={Object.values(errors).some(error => error)}
               >
-                Send Message
+                {t('contact.form.submit')}
               </Button>
             </form>
           </div>
@@ -279,10 +274,10 @@ export function Contact() {
               className={styles.socialCard}
             >
               <Text fw={600} size="lg" mb="md" className={styles.socialTitle}>
-                Follow On Social Media
+                {t('contact.social.title')}
               </Text>
               <Text size="sm" mb="xl" className={styles.socialText}>
-                Follow me on social media to stay updated on my journey &lt;3.
+                {t('contact.social.description')}
               </Text>
               <Group>
                 <Button 
@@ -293,7 +288,7 @@ export function Contact() {
                   radius="xl"
                   className={styles.socialButton}
                 >
-                  Instagram
+                  {t('contact.social.instagram')}
                 </Button>
                 <Button 
                   component="a" 
@@ -303,7 +298,7 @@ export function Contact() {
                   radius="xl"
                   className={styles.socialButton}
                 >
-                  TikTok
+                  {t('contact.social.tiktok')}
                 </Button>
               </Group>
             </Paper>

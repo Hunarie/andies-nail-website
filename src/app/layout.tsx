@@ -3,6 +3,8 @@ import { MantineProvider, createTheme } from "@mantine/core";
 import { Playfair_Display, Cormorant_Garamond, Lato } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import "./globals.css";
@@ -143,19 +145,23 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  
   return (
-    <html lang="en" className={`${playfair.variable} ${cormorant.variable} ${lato.variable}`}>
+    <html lang={locale} className={`${playfair.variable} ${cormorant.variable} ${lato.variable}`}>
       <body>
-        <MantineProvider theme={theme}>
-          {children}
-          <SpeedInsights />
-          <Analytics />
-        </MantineProvider>
+        <NextIntlClientProvider>
+          <MantineProvider theme={theme}>
+            {children}
+            <SpeedInsights />
+            <Analytics />
+          </MantineProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

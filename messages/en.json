@@ -1,0 +1,168 @@
+{
+  "navbar": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "bookNow": "Book Now"
+  },
+  "hero": {
+    "title": "Where Detail Meets Design",
+    "description": "Premium nail services that combine creativity, precision, and luxury. Experience the best in nail artistry with personalized designs.",
+    "bookButton": "Book Your Appointment",
+    "carousel": {
+      "designCaption": "Creative and Trendy Designs",
+      "luxuryCaption": "Luxury Nail Experience"
+    }
+  },
+  "services": {
+    "title": "My Services",
+    "items": {
+      "gelXShort": {
+        "title": "Gel-X Short Set",
+        "description": "Soft gel extension system that provides a natural-looking, longer nail. It combines the flexibility of gel polish with the strength of traditional acrylics.",
+        "price": "Starting at $50",
+        "duration": "Approx. 2 hours"
+      },
+      "gelXMedium": {
+        "title": "Gel-X Medium Set",
+        "description": "Soft gel extension system that provides a natural-looking, longer nail. It combines the flexibility of gel polish with the strength of traditional acrylics.",
+        "price": "Starting at $60",
+        "duration": "Approx. 2 hrs 30 min"
+      },
+      "gelXLong": {
+        "title": "Gel-X Long Set",
+        "description": "Soft gel extension system that provides a natural-looking, longer nail. It combines the flexibility of gel polish with the strength of traditional acrylics.",
+        "price": "Starting at $70",
+        "duration": "Approx. 2 hrs 50 min"
+      },
+      "gelXRemoval": {
+        "title": "Gel-X Removal (Acetone Soak-Off)",
+        "description": "Product removal using an acetone soak and gentle buffing, completed with cuticle care.",
+        "price": "$20",
+        "duration": "Approx. 45 min"
+      },
+      "nailCleanup": {
+        "title": "Nail Cleanup",
+        "description": "Light shaping, buffing, and a full cuticle cleanup, finished with cuticle oil and an optional clear top coat.",
+        "price": "$30",
+        "duration": "Approx. 45 min"
+      },
+      "gelManicure": {
+        "title": "Gel Manicure",
+        "description": "Full prep, cuticle work, and basic gel polish application, focusing on nail health with minimal damage.",
+        "price": "$40",
+        "duration": "Approx. 1 hrs 30 min"
+      }
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "name": "Andie Orozco",
+    "greeting": "Hi, I'm Andie Orozco! Founder of Andie Orozco's Nails.",
+    "paragraph1": "My journey started in 2021, when I couldn't find a salon that took the time to create the detailed, creative nail designs I dreamed of. Tired of rushed appointments and limited options, I started doing my own nails to express my personal style.",
+    "paragraph2": "Soon, friends and followers began noticing my work — and asking me to do theirs too. What began as a personal passion has now grown into a business rooted in creativity and quality service.",
+    "paragraph3": "My goal is giving every client a personalized experience that leaves them feeling seen, confident, and proud of their look! Whether it's a minimalist set or a bold, artistic design — your nails deserve time, care, and creativity. I'm here to deliver just that!",
+    "signature": "~ Andie Orozco ❤"
+  },
+  "booking": {
+    "title": "Book Your Appointment",
+    "description": "Schedule your appointment now using my online booking system. Choose the service, date, and time that works best for you.",
+    "scheduleButton": "Schedule Now",
+    "policies": {
+      "title": "Booking Policy",
+      "header": "Thank you for choosing me to bring your nail vision to life 💖",
+      "cards": {
+        "appointments": {
+          "title": "Appointments",
+          "text": "Released 2 weeks in advance. Book early as spots fill quickly!"
+        },
+        "serviceHours": {
+          "title": "Service Hours",
+          "text": "Mon-Fri: 11:30am-7pm\nSat: 9am-7pm\n(Closed Sun for rest & recharge!)"
+        },
+        "duration": {
+          "title": "Duration",
+          "text": "Services range from 2-4 hours depending on design complexity."
+        },
+        "payment": {
+          "title": "Payment",
+          "text": "Cash or Cash App only\n$andieorozco"
+        },
+        "deposit": {
+          "title": "Deposit",
+          "text": "$15 non-refundable deposit required.\nApplied to final balance."
+        },
+        "booking": {
+          "title": "Booking",
+          "text": "Use online booking only.\nDMs for questions and inspo only."
+        }
+      },
+      "buttons": {
+        "close": "Close",
+        "accept": "Accept & Continue"
+      }
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "Have a question or want to book an appointment? Fill out the form below and I'll get back to you as soon as possible.",
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name",
+        "error": "Name is required"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your.email@example.com",
+        "error": {
+          "required": "Email is required",
+          "invalid": "Please enter a valid email address"
+        }
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "(555) 123-4567",
+        "error": "Please enter a valid phone number"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "How can I help you?",
+        "error": "Message is required"
+      },
+      "submit": "Send Message"
+    },
+    "alerts": {
+      "success": {
+        "title": "Message Sent!",
+        "message": "Thank you for your message. I'll get back to you soon!"
+      },
+      "error": {
+        "title": "Error",
+        "message": "There was a problem sending your message. Please try again."
+      }
+    },
+    "contactInfo": {
+      "phone": {
+        "title": "Phone"
+      },
+      "email": {
+        "title": "Email"
+      }
+    },
+    "social": {
+      "title": "Follow On Social Media",
+      "description": "Follow me on social media to stay updated on my journey <3",
+      "instagram": "Instagram",
+      "tiktok": "TikTok"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} All rights reserved.",
+    "social": {
+      "instagram": "Instagram",
+      "tiktok": "TikTok"
+    }
+  }
+}

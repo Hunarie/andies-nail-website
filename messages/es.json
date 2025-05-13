@@ -1,0 +1,168 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "about": "Sobre",
+    "contact": "Contacto",
+    "bookNow": "Reservar Ahora"
+  },
+  "hero": {
+    "title": "Donde el Detalle Encuentra el Diseño",
+    "description": "Servicios premium de uñas que combinan creatividad, precisión y lujo. Experimenta lo mejor en arte de uñas con diseños personalizados.",
+    "bookButton": "Reserva tu Cita",
+    "carousel": {
+      "designCaption": "Diseños Creativos y Modernos",
+      "luxuryCaption": "Experiencia de Lujo en Uñas"
+    }
+  },
+  "services": {
+    "title": "Mis Servicios",
+    "items": {
+      "gelXShort": {
+        "title": "Gel-X Corto",
+        "description": "Sistema de extensión de gel suave que proporciona una uña más larga de aspecto natural. Combina la flexibilidad del gel con la resistencia de los acrílicos tradicionales.",
+        "price": "Desde $50",
+        "duration": "Aprox. 2 horas"
+      },
+      "gelXMedium": {
+        "title": "Gel-X Mediano",
+        "description": "Sistema de extensión de gel suave que proporciona una uña más larga de aspecto natural. Combina la flexibilidad del gel con la resistencia de los acrílicos tradicionales.",
+        "price": "Desde $60",
+        "duration": "Aprox. 2 hrs 30 min"
+      },
+      "gelXLong": {
+        "title": "Gel-X Largo",
+        "description": "Sistema de extensión de gel suave que proporciona una uña más larga de aspecto natural. Combina la flexibilidad del gel con la resistencia de los acrílicos tradicionales.",
+        "price": "Desde $70",
+        "duration": "Aprox. 2 hrs 50 min"
+      },
+      "gelXRemoval": {
+        "title": "Remoción de Gel-X (Remojo en Acetona)",
+        "description": "Remoción del producto usando remojo en acetona y pulido suave, completado con cuidado de cutículas.",
+        "price": "$20",
+        "duration": "Aprox. 45 min"
+      },
+      "nailCleanup": {
+        "title": "Limpieza de Uñas",
+        "description": "Forma ligera, pulido y limpieza completa de cutículas, finalizado con aceite para cutículas y una capa superior transparente opcional.",
+        "price": "$30",
+        "duration": "Aprox. 45 min"
+      },
+      "gelManicure": {
+        "title": "Manicure en Gel",
+        "description": "Preparación completa, trabajo de cutículas y aplicación básica de gel, enfocándose en la salud de las uñas con daño mínimo.",
+        "price": "$40",
+        "duration": "Aprox. 1 hrs 30 min"
+      }
+    }
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "name": "Andie Orozco",
+    "greeting": "¡Hola, soy Andie Orozco! Fundadora de Andie Orozco's Nails.",
+    "paragraph1": "Mi viaje comenzó en 2021, cuando no podía encontrar un salón que se tomara el tiempo para crear los diseños de uñas detallados y creativos que soñaba. Cansada de citas apresuradas y opciones limitadas, comencé a hacerme mis propias uñas para expresar mi estilo personal.",
+    "paragraph2": "Pronto, amigos y seguidores comenzaron a notar mi trabajo — y a pedirme que hiciera el suyo también. Lo que comenzó como una pasión personal ahora se ha convertido en un negocio arraigado en la creatividad y el servicio de calidad.",
+    "paragraph3": "Mi objetivo es brindar a cada cliente una experiencia personalizada que los haga sentirse vistos, seguros y orgullosos de su apariencia. Ya sea un conjunto minimalista o un diseño artístico y audaz — tus uñas merecen tiempo, cuidado y creatividad. ¡Estoy aquí para ofrecerte exactamente eso!",
+    "signature": "~ Andie Orozco ❤"
+  },
+  "booking": {
+    "title": "Reserva tu Cita",
+    "description": "Programa tu cita ahora usando mi sistema de reservas en línea. Elige el servicio, fecha y hora que mejor te convenga.",
+    "scheduleButton": "Programar Ahora",
+    "policies": {
+      "title": "Política de Reservas",
+      "header": "Gracias por elegirme para dar vida a tu visión de uñas 💖",
+      "cards": {
+        "appointments": {
+          "title": "Citas",
+          "text": "Disponibles con 2 semanas de anticipación. ¡Reserva temprano ya que los espacios se llenan rápido!"
+        },
+        "serviceHours": {
+          "title": "Horario de Servicio",
+          "text": "Lun-Vie: 11:30am-7pm\nSáb: 9am-7pm\n(Cerrado Dom para descanso y recarga!)"
+        },
+        "duration": {
+          "title": "Duración",
+          "text": "Los servicios duran entre 2-4 horas dependiendo de la complejidad del diseño."
+        },
+        "payment": {
+          "title": "Pago",
+          "text": "Solo efectivo o Cash App\n$andieorozco"
+        },
+        "deposit": {
+          "title": "Depósito",
+          "text": "Se requiere un depósito no reembolsable de $15.\nAplicado al saldo final."
+        },
+        "booking": {
+          "title": "Reservas",
+          "text": "Usar solo el sistema de reservas en línea.\nDMs solo para preguntas e inspiración."
+        }
+      },
+      "buttons": {
+        "close": "Cerrar",
+        "accept": "Aceptar y Continuar"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contáctame",
+    "description": "¿Tienes una pregunta o quieres reservar una cita? Completa el formulario a continuación y te responderé lo antes posible.",
+    "form": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Tu nombre",
+        "error": "El nombre es requerido"
+      },
+      "email": {
+        "label": "Correo electrónico",
+        "placeholder": "tu.correo@ejemplo.com",
+        "error": {
+          "required": "El correo electrónico es requerido",
+          "invalid": "Por favor ingresa un correo electrónico válido"
+        }
+      },
+      "phone": {
+        "label": "Teléfono",
+        "placeholder": "(555) 123-4567",
+        "error": "Por favor ingresa un número de teléfono válido"
+      },
+      "message": {
+        "label": "Mensaje",
+        "placeholder": "¿En qué puedo ayudarte?",
+        "error": "El mensaje es requerido"
+      },
+      "submit": "Enviar Mensaje"
+    },
+    "alerts": {
+      "success": {
+        "title": "¡Mensaje Enviado!",
+        "message": "Gracias por tu mensaje. ¡Te responderé pronto!"
+      },
+      "error": {
+        "title": "Error",
+        "message": "Hubo un problema al enviar tu mensaje. Por favor intenta de nuevo."
+      }
+    },
+    "contactInfo": {
+      "phone": {
+        "title": "Teléfono"
+      },
+      "email": {
+        "title": "Correo electrónico"
+      }
+    },
+    "social": {
+      "title": "Sígueme en Redes Sociales",
+      "description": "Sígueme en redes sociales para mantenerte al día con mi trayectoria <3",
+      "instagram": "Instagram",
+      "tiktok": "TikTok"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Todos los derechos reservados.",
+    "social": {
+      "instagram": "Instagram",
+      "tiktok": "TikTok"
+    }
+  }
+}

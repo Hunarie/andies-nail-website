@@ -5,12 +5,13 @@ import { Carousel } from '@mantine/carousel';
 import NextImage from 'next/image';
 import styles from './Hero.module.css';
 import { scrollToElementCentered } from '@/utils/scroll';
+import { useTranslations } from 'next-intl';
 
 const carouselImages = [
   {
     src: '/img/nails1.jpg',
     alt: 'Stylish pink nail design',
-    caption: 'Creative and Trendy Designs'
+    captionKey: 'hero.carousel.designCaption'
   },
   {
     src: '/img/nails2.jpg',
@@ -19,7 +20,7 @@ const carouselImages = [
   {
     src: '/img/nails3.jpg',
     alt: 'Elegant nail art',
-    caption: 'Luxury Nail Experience'
+    captionKey: 'hero.carousel.luxuryCaption'
   },
   {
     src: '/img/nails4.jpg',
@@ -28,6 +29,7 @@ const carouselImages = [
 ];
 
 export function Hero() {
+  const t = useTranslations();
   const handleBookClick = (e: React.MouseEvent) => {
     e.preventDefault();
     
@@ -61,7 +63,7 @@ export function Hero() {
             size="2.5rem"
             className={styles.heroTitle}
           >
-            Where Detail Meets Design
+            {t('hero.title')}
           </Title>
           
           <Text 
@@ -70,8 +72,7 @@ export function Hero() {
             mx="auto" 
             className={styles.heroDescription}
           >
-            Premium nail services that combine creativity, precision, and luxury.
-            Experience the best in nail artistry with personalized designs.
+            {t('hero.description')}
           </Text>
           
           <Button
@@ -83,7 +84,7 @@ export function Hero() {
             className={styles.heroButton}
             onClick={handleBookClick}
           >
-            Book Your Appointment
+            {t('hero.bookButton')}
           </Button>
           
           <span className="decorative-flourish">❦</span>
@@ -140,14 +141,14 @@ export function Hero() {
             {carouselImages.map((image, index) => (
               <Carousel.Slide key={index}>
                 <Box className={styles.carouselSlideWrapper}>
-                  {image.caption && (
+                  {image.captionKey && (
                     <div className={styles.carouselCaption}>
                       <Text 
                         size="xl" 
                         fw={500} 
                         className={styles.captionText}
                       >
-                        {image.caption}
+                        {t(image.captionKey)}
                       </Text>
                     </div>
                   )}

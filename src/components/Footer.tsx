@@ -3,8 +3,12 @@
 import { Box, Container, Text, Group, ActionIcon, Flex } from '@mantine/core';
 import { FaInstagram, FaTiktok } from 'react-icons/fa';
 import styles from './Footer.module.css';
+import { useTranslations } from 'next-intl';
 
 export function Footer() {
+  const t = useTranslations();
+  const currentYear = new Date().getFullYear();
+
   return (
     <Box 
       component="footer"
@@ -25,7 +29,7 @@ export function Footer() {
             {process.env.NEXT_PUBLIC_SITE_NAME || "Andie's Nails"}
           </Text>
           <Text size="xs" className={styles.mobileText}>
-            © {new Date().getFullYear()} All rights reserved.
+            {t('footer.copyright', { year: currentYear })}
           </Text>
         </Flex>
 
@@ -36,11 +40,11 @@ export function Footer() {
               {process.env.NEXT_PUBLIC_SITE_NAME || "Andie's Nails"}
             </Text>
             <Text size="xs" className={styles.desktopText}>
-              © {new Date().getFullYear()} All rights reserved.
+              {t('footer.copyright', { year: currentYear })}
             </Text>
           </Group>
           
-          <Group gap={10} visibleFrom="sm">
+          <Group gap={10}>
             <ActionIcon 
               size="md" 
               variant="filled" 
@@ -48,7 +52,7 @@ export function Footer() {
               component="a"
               href={process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/andiee.orozco2/"}
               target="_blank"
-              aria-label="Instagram"
+              aria-label={t('footer.social.instagram')}
               className={styles.socialIcon}
             >
               <FaInstagram size={18} />
@@ -60,7 +64,7 @@ export function Footer() {
               component="a"
               href={process.env.NEXT_PUBLIC_TIKTOK_URL || "https://www.tiktok.com/@andieorozco4"}
               target="_blank"
-              aria-label="TikTok"
+              aria-label={t('footer.social.tiktok')}
               className={styles.socialIcon}
             >
               <FaTiktok size={16} />

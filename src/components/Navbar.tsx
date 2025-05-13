@@ -17,17 +17,20 @@ import { useDisclosure } from '@mantine/hooks';
 import { FaInstagram, FaTiktok } from 'react-icons/fa';
 import styles from './Navbar.module.css';
 import { scrollToElementCentered } from '@/utils/scroll';
-
-const navLinks = [
-  { label: 'Home', href: '#home', id: 'home' },
-  { label: 'Services', href: '#services', id: 'services' },
-  { label: 'About', href: '#about', id: 'about' },
-  { label: 'Contact', href: '#contact', id: 'contact' }
-];
+import { useTranslations } from 'next-intl';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export function Navbar() {
+  const t = useTranslations();
   const [opened, { toggle, close }] = useDisclosure(false);
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails";
+
+  const navLinks = [
+    { label: t('navbar.home'), href: '#home', id: 'home' },
+    { label: t('navbar.services'), href: '#services', id: 'services' },
+    { label: t('navbar.about'), href: '#about', id: 'about' },
+    { label: t('navbar.contact'), href: '#contact', id: 'contact' }
+  ];
 
   const handleBookNowClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -100,12 +103,13 @@ export function Navbar() {
               className={styles.navButton}
               onClick={handleBookNowClick}
             >
-              Book Now
+              {t('navbar.bookNow')}
             </Button>
           </Group>
 
-          {/* Social media icons */}
+          {/* Social media icons and language switcher */}
           <Group className={styles.socialsGroup} visibleFrom="md">
+            <LanguageSwitcher className={styles.languageSwitcher} />
             <ActionIcon 
               component="a"
               href={process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/andiee.orozco2/"}
@@ -182,8 +186,13 @@ export function Navbar() {
             }}
             className={styles.drawerButton}
           >
-            Book Now
+            {t('navbar.bookNow')}
           </Button>
+
+          {/* Language switcher in mobile drawer */}
+          <Center my="xs">
+            <LanguageSwitcher />
+          </Center>
 
           <Center className={styles.drawerSocial}>
             <Group className={styles.drawerSocialsGroup}>
