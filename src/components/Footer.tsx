@@ -22,7 +22,7 @@ export function Footer() {
           className={styles.mobileContainer}
         >
           <Text className={styles.mobileLogo}>
-            {process.env.NEXT_PUBLIC_SITE_NAME?.split("'")[0] || "Andie's"} Nails
+            {process.env.NEXT_PUBLIC_SITE_NAME || "Andie's Nails"}
           </Text>
           <Text size="xs" className={styles.mobileText}>
             © {new Date().getFullYear()} All rights reserved.
@@ -33,7 +33,7 @@ export function Footer() {
         <Group justify="space-between" align="center" visibleFrom="sm">
           <Group align="center" gap="xs">
             <Text className={styles.desktopLogo}>
-              {process.env.NEXT_PUBLIC_SITE_NAME?.split("'")[0] || "Andie's"} Nails
+              {process.env.NEXT_PUBLIC_SITE_NAME || "Andie's Nails"}
             </Text>
             <Text size="xs" className={styles.desktopText}>
               © {new Date().getFullYear()} All rights reserved.
