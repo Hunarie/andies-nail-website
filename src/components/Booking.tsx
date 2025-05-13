@@ -107,9 +107,10 @@ export function Booking() {
           withCloseButton={false}
           classNames={{
             content: styles.policiesModalContent,
-            header: styles.policiesModalHeader,
+            header: `${styles.policiesModalHeader} ${styles.policiesModalHeaderMobile}`,
             title: styles.policiesModalTitle,
-            close: styles.policiesModalClose
+            close: styles.policiesModalClose,
+            body: styles.policiesModalBody
           }}
           scrollAreaComponent={ScrollArea.Autosize}
           withOverlay
@@ -186,7 +187,7 @@ export function Booking() {
           </div>
           
           {/* Action buttons */}
-          <Group justify="center" mt="md" className={styles.modalButtonContainer}>
+          <Group justify="center" mt="md" className={`${styles.modalButtonContainer} ${styles.policiesModalButtonSpacing}`}>
             <Button 
               variant="default" 
               onClick={closePolicies} 

@@ -183,7 +183,7 @@
   }
   
   /* Prevent header from being sticky on mobile */
-  :global(.mantine-Modal-header) {
+  .policiesModalHeaderMobile {
     position: static !important;
     top: auto !important;
     z-index: auto !important;
@@ -197,7 +197,7 @@
   }
   
   /* Adjusted body padding for tablets */
-  :global(.mantine-Modal-body) {
+  .policiesModalBody {
     padding: 0.85rem !important;
   }
   
@@ -232,7 +232,7 @@
   }
   
   /* Button size and spacing for tablets */
-  :global(.policiesModalContent + div .mantine-Group-root) {
+  .policiesModalButtonSpacing {
     margin-top: 0.5rem !important;
   }
   
@@ -245,7 +245,7 @@
   }
   
   /* Set fixed height on phone screens to eliminate scrolling */
-  :global(.mantine-Modal-content) {
+  .policiesModalContent {
     max-height: 100% !important;
     overflow: visible !important;
   }
@@ -284,7 +284,7 @@
     padding: 0.5rem;
   }
   
-  :global(.mantine-Modal-body) {
+  .policiesModalBody {
     padding: 0.5rem !important;
   }
   
