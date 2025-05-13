@@ -4,6 +4,7 @@ import { Container, Title, Text, Button, Box } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import NextImage from 'next/image';
 import styles from './Hero.module.css';
+import { scrollToElementCentered } from '@/utils/scroll';
 
 const carouselImages = [
   {
@@ -27,6 +28,13 @@ const carouselImages = [
 ];
 
 export function Hero() {
+  const handleBookClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Always center the booking section, regardless of device
+    scrollToElementCentered('book');
+  };
+
   return (
     <Box 
       id="home" 
@@ -73,6 +81,7 @@ export function Hero() {
             radius="sm"
             color="pink.4"
             className={styles.heroButton}
+            onClick={handleBookClick}
           >
             Book Your Appointment
           </Button>

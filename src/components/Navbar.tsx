@@ -16,17 +16,58 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import { FaInstagram, FaTiktok } from 'react-icons/fa';
 import styles from './Navbar.module.css';
+import { scrollToElementCentered } from '@/utils/scroll';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' }
+  { label: 'Home', href: '#home', id: 'home' },
+  { label: 'Services', href: '#services', id: 'services' },
+  { label: 'About', href: '#about', id: 'about' },
+  { label: 'Contact', href: '#contact', id: 'contact' }
 ];
 
 export function Navbar() {
   const [opened, { toggle, close }] = useDisclosure(false);
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails";
+
+  const handleBookNowClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollToElementCentered('book');
+  };
+
+  const handleNavLinkClick = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    
+    // Check if we're on mobile
+    const isMobile = window.innerWidth < 768;
+    
+    if (opened) {
+      close();
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          // On mobile, scroll to top of section (except for booking)
+          if (isMobile && id !== 'book') {
+            element.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            // On desktop or for booking section, center it
+            scrollToElementCentered(id);
+          }
+        }
+      }, 300);
+    } else {
+      // When menu is not open (desktop view)
+      const element = document.getElementById(id);
+      if (element) {
+        // On mobile, scroll to top of section (except for booking)
+        if (isMobile && id !== 'book') {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          // On desktop or for booking section, center it
+          scrollToElementCentered(id);
+        }
+      }
+    }
+  };
 
   return (
     <Box 
@@ -47,6 +88,7 @@ export function Navbar() {
                 key={link.label}
                 href={link.href}
                 className={styles.navLink}
+                onClick={(e) => handleNavLinkClick(e, link.id)}
               >
                 {link.label}
               </Anchor>
@@ -56,6 +98,7 @@ export function Navbar() {
               href="#book" 
               variant="filled"
               className={styles.navButton}
+              onClick={handleBookNowClick}
             >
               Book Now
             </Button>
@@ -122,7 +165,7 @@ export function Navbar() {
               key={link.label}
               component="a"
               href={link.href}
-              onClick={close}
+              onClick={(e) => handleNavLinkClick(e, link.id)}
               className={styles.drawerLink}
             >
               {link.label}
@@ -132,7 +175,11 @@ export function Navbar() {
           <Button 
             component="a" 
             href="#book" 
-            onClick={close}
+            onClick={(e) => {
+              e.preventDefault();
+              close();
+              scrollToElementCentered('book', 300);
+            }}
             className={styles.drawerButton}
           >
             Book Now

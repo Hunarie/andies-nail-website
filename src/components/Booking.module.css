@@ -1,3 +1,4 @@
+/* Main booking section styling */
 .bookingSection {
   background-color: var(--hero-bg);
   text-align: center;
@@ -5,17 +6,20 @@
   overflow: hidden;
 }
 
+/* Booking card container */
 .bookingCard {
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
+/* Booking text styling */
 .bookingText {
   font-family: var(--font-cormorant), serif;
   font-size: 1.4rem;
   line-height: 1.6;
 }
 
+/* Schedule button styling */
 .bookButton {
   font-family: var(--font-lato), sans-serif;
   text-transform: uppercase;
@@ -24,4 +28,272 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   padding: 0 2rem;
   height: 3rem;
+}
+
+/* ======= Policies Modal Styles ======= */
+/* Modal content container */
+.policiesModalContent {
+  background-color: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 1.5rem;
+}
+
+/* Modal header styling */
+.policiesModalHeader {
+  background-color: var(--primary-pink-light);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* Modal title styling */
+.policiesModalTitle {
+  font-family: var(--font-playfair), serif;
+  color: var(--primary-pink-dark);
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Modal close button styling */
+.policiesModalClose:hover {
+  background-color: var(--primary-pink-light);
+}
+
+/* Modal content area */
+.policiesContent {
+  padding: 0;
+}
+
+/* Policy header text */
+.policyHeader {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--primary-pink-dark);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Policy grid layout */
+.policyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Individual policy card */
+.policyCard {
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Policy card icon */
+.policyIcon {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--primary-pink-light);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+/* Policy card title */
+.policyTitle {
+  font-family: var(--font-playfair), serif;
+  color: var(--primary-pink-dark);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem 0;
+  line-height: 1.2;
+}
+
+/* Policy card text */
+.policyText {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Highlight for important policy info */
+.policyHighlight {
+  color: var(--primary-pink-dark);
+  font-weight: 500;
+}
+
+/* Center the buttons group more effectively */
+.modalButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Decline/Close button styling */
+.policiesDeclineButton {
+  font-family: var(--font-lato), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+/* Accept button styling */
+.policiesAcceptButton {
+  font-family: var(--font-lato), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--primary-pink-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+/* Button hover effects */
+.policiesDeclineButton:hover, 
+.policiesAcceptButton:hover {
+  transform: translateY(-2px);
+}
+
+/* ======= Responsive Styles ======= */
+/* Tablet and smaller screens */
+@media (max-width: 768px) {
+  /* Policy grid layout for tablets */
+  .policyGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* Prevent header from being sticky on mobile */
+  .policiesModalHeaderMobile {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+    box-shadow: none !important;
+    padding: 0.35rem 0.75rem !important;
+  }
+  
+  /* Adjusted content padding for tablets */
+  .policiesModalContent {
+    padding: 0.85rem;
+  }
+  
+  /* Adjusted body padding for tablets */
+  .policiesModalBody {
+    padding: 0.85rem !important;
+  }
+  
+  /* More spacing adjustments */
+  .policyHeader {
+    font-size: 0.9rem;
+    margin-bottom: 0.35rem;
+  }
+  
+  /* Card adjustments for tablets */
+  .policyCard {
+    padding: 0.5rem;
+  }
+  
+  /* Icon size adjustments for tablets */
+  .policyIcon {
+    font-size: 1.1rem;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 0.25rem;
+  }
+  
+  /* Text size adjustments for tablets */
+  .policyTitle {
+    font-size: 0.8rem;
+    margin-bottom: 0.15rem;
+  }
+  
+  .policyText {
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+  
+  /* Button size and spacing for tablets */
+  .policiesModalButtonSpacing {
+    margin-top: 0.5rem !important;
+  }
+  
+  /* Scope to only the policy modal buttons */
+  .policiesDeclineButton, 
+  .policiesAcceptButton {
+    height: 30px !important;
+    padding: 0 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  /* Set fixed height on phone screens to eliminate scrolling */
+  .policiesModalContent {
+    max-height: 100% !important;
+    overflow: visible !important;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  /* Policy grid layout for phones */
+  .policyGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.3rem;
+    margin-top: 0.3rem;
+  }
+  
+  /* Further compact the modal on the smallest screens */
+  .policyIcon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 0.15rem;
+  }
+  
+  /* Smaller text for phones */
+  .policyTitle {
+    font-size: 0.65rem;
+    margin-bottom: 0.1rem;
+  }
+  
+  .policyText {
+    font-size: 0.60rem;
+    line-height: 1.1;
+  }
+  
+  /* More compact padding for phones */
+  .policiesModalContent {
+    padding: 0.5rem;
+  }
+  
+  .policiesModalBody {
+    padding: 0.5rem !important;
+  }
+  
+  /* Make buttons more compact on mobile */
+  .policiesDeclineButton, 
+  .policiesAcceptButton {
+    height: 26px !important;
+    padding: 0 0.6rem !important;
+    font-size: 0.7rem !important;
+    min-width: 80px;
+  }
 } 
