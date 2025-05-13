@@ -36,6 +36,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Body when modals are open - preserves scrollbar width to prevent layout shift */
+body[style*="position: fixed"] {
+  /* The scrollbar width is preserved to prevent layout shift */
+  padding-right: var(--scrollbar-width, 17px);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

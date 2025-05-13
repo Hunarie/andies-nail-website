@@ -16,10 +16,37 @@ export function Booking() {
   const [isOpen, setIsOpen] = useState(false);
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
   
-  // Set root element on mount
+  // Set root element on mount and calculate scrollbar width
   useEffect(() => {
     setRootElement(document.getElementById('__next') || document.body);
+    
+    // Calculate scrollbar width and set it as a CSS variable
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
   }, []);
+  
+  // Disable scrolling when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      // Save the current scroll position
+      const scrollY = window.scrollY;
+      // Add no-scroll class to body
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflowY = 'scroll';
+    } else {
+      // Restore scroll position
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflowY = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+    }
+  }, [isOpen]);
   
   // Open the Calendly popup
   const openCalendly = useCallback(() => setIsOpen(true), []);
