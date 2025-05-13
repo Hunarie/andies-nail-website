@@ -141,7 +141,7 @@
 }
 
 /* Center the buttons group more effectively */
-:global(.mantine-Modal-body > div:last-child) {
+.modalButtonContainer {
   display: flex;
   justify-content: center;
   margin-top: 1rem;

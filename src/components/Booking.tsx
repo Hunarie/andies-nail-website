@@ -186,7 +186,7 @@ export function Booking() {
           </div>
           
           {/* Action buttons */}
-          <Group justify="center" mt="md">
+          <Group justify="center" mt="md" className={styles.modalButtonContainer}>
             <Button 
               variant="default" 
               onClick={closePolicies} 
