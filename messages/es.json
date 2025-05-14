@@ -37,7 +37,7 @@
         "duration": "Aprox. 2 hrs 50 min"
       },
       "gelXRemoval": {
-        "title": "Remoción de Gel-X (Remojo en Acetona)",
+        "title": "Remoción de Gel-X",
         "description": "Remoción del producto usando remojo en acetona y pulido suave, completado con cuidado de cutículas.",
         "price": "$20",
         "duration": "Aprox. 45 min"
@@ -87,7 +87,7 @@
         },
         "payment": {
           "title": "Pago",
-          "text": "Solo efectivo o Cash App\n$andieorozco"
+          "text": "Solo efectivo o Cash App\n<cashapp>$andieorozco</cashapp>"
         },
         "deposit": {
           "title": "Depósito",

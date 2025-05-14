@@ -37,7 +37,7 @@
         "duration": "Approx. 2 hrs 50 min"
       },
       "gelXRemoval": {
-        "title": "Gel-X Removal (Acetone Soak-Off)",
+        "title": "Gel-X Removal",
         "description": "Product removal using an acetone soak and gentle buffing, completed with cuticle care.",
         "price": "$20",
         "duration": "Approx. 45 min"
@@ -87,7 +87,7 @@
         },
         "payment": {
           "title": "Payment",
-          "text": "Cash or Cash App only\n$andieorozco"
+          "text": "Cash or Cash App only\n<cashapp>$andieorozco</cashapp>"
         },
         "deposit": {
           "title": "Deposit",

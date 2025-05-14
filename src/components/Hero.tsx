@@ -103,6 +103,8 @@ export function Hero() {
               root: {
                 boxShadow: 'none',
                 backgroundColor: 'transparent',
+                userSelect: 'none',
+                WebkitUserSelect: 'none',
               },
               viewport: {
                 backgroundColor: 'transparent',
@@ -142,7 +144,7 @@ export function Hero() {
               <Carousel.Slide key={index}>
                 <Box className={styles.carouselSlideWrapper}>
                   {image.captionKey && (
-                    <div className={styles.carouselCaption}>
+                    <div className={styles.carouselCaption} style={{ userSelect: 'none' }}>
                       <Text 
                         size="xl" 
                         fw={500} 
@@ -152,7 +154,7 @@ export function Hero() {
                       </Text>
                     </div>
                   )}
-                  <div className={styles.carouselSlide}>
+                  <div className={styles.carouselSlide} style={{ userSelect: 'none' }}>
                     <NextImage
                       src={image.src}
                       alt={image.alt}
@@ -160,6 +162,7 @@ export function Hero() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 450px"
                       className={styles.carouselImage}
                       priority={index === 0}
+                      draggable="false"
                     />
                   </div>
                 </Box>

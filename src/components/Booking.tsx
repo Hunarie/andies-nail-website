@@ -167,7 +167,9 @@ export function Booking() {
                   {t('booking.policies.cards.payment.title')}
                 </Text>
                 <Text className={styles.policyText}>
-                  {t('booking.policies.cards.payment.text')}
+                  {t.rich('booking.policies.cards.payment.text', {
+                    cashapp: (chunks) => <span className={styles.cashAppHandle}>{chunks}</span>
+                  })}
                 </Text>
               </div>
               

@@ -140,6 +140,12 @@
   font-weight: 500;
 }
 
+/* Cash App handle styling */
+.cashAppHandle {
+  color: var(--primary-pink-dark);
+  font-weight: 500;
+}
+
 /* Center the buttons group more effectively */
 .modalButtonContainer {
   display: flex;
