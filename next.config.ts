@@ -13,11 +13,7 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048], // Responsive sizes
     imageSizes: [16, 32, 48, 64, 96, 128, 256], // Image sizes for srcset
   },
-  experimental: {
-    // Enable optimizations
-    optimizeCss: true,
-    scrollRestoration: true,
-  },
+  // No experimental features needed - all stable features are enabled by default
   env: {
     // Fallback values for environment variables
     NEXT_PUBLIC_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME || "Andie Orozco's Nails",
