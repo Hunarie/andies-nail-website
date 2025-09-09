@@ -93,8 +93,7 @@ export function Hero() {
           <Carousel
             withIndicators
             height={450}
-            loop
-            align="center"
+            emblaOptions={{ loop: true, align: 'center' }}
             slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
             slideGap={{ base: 0, sm: "xs", md: "sm" }}
             controlsOffset="md"
