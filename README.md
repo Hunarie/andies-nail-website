@@ -1,46 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Andie Orozco's Nails
 
-## Getting Started
+The website for [andieorozconails.com](https://www.andieorozconails.com): one static page, one stylesheet, one small script, and one serverless function for the contact form. There is no framework and no build step.
 
-1. Run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+public/            everything visitors download
+  index.html       all the content: services, prices, about, policies
+  styles.css       all the styling
+  script.js        menu, carousel arrows, booking policy dialog, contact form
+  404.html
+  img/  fonts/     optimized photos and self-hosted fonts
+api/contact.js     emails contact-form messages (runs on Vercel)
+vercel.json        security headers and caching
+originals/         full-size photos (not deployed)
+tools/             image optimizer and local preview server
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Text, prices, services, policies:** edit `public/index.html`. Each section is labelled with a comment.
+- **Location, hours and phone for search engines:** the `application/ld+json` block near the top of `index.html`. Keep it in step with what the page shows.
+- **Booking:** the booking section and the policy dialog link to Instagram. If the handle changes, search `index.html` for `instagram.com` and update every link.
+- **Colors and fonts:** the variables at the top of `public/styles.css`.
+- **Photos:** put the full-size JPG in `originals/` (reuse a file name to replace a photo), then run:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to optimize and load custom fonts.
+  ```
+  pip install pillow
+  python tools/optimize_images.py
+  ```
 
-## Features
+  This writes small WebP files to `public/img/` and strips metadata such as GPS location. `originals/` is in a public repository, so the script also scrubs metadata from the originals themselves.
 
-- **Modern Next.js App Router**: Utilizing the latest Next.js features
-- **Optimized Images**: Using next/image for optimal loading and rendering
-- **Type Safety**: Built with TypeScript for enhanced developer experience
-- **Responsive Design**: Looks great on all devices
-- **Environment Configuration**: Easily customize site content through environment variables
-- **Error Handling**: Robust error boundaries for a smooth user experience
-- **Mantine UI**: Beautiful UI components with Mantine
+## Preview
 
-## Learn More
+```
+python tools/serve.py
+```
 
-To learn more about Next.js, take a look at the following resources:
+Then open http://localhost:4173. The preview sends the same security headers as production. You can also just open `public/index.html` in a browser. The contact form only sends mail when deployed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploying
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Pushing to `main` deploys to Vercel. `vercel.json` tells Vercel this is a plain static site, so no dashboard changes are needed.
 
-## Deploy on Vercel
+The contact form needs these environment variables in the Vercel project (they are the same ones the previous version used):
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variable | Meaning |
+| --- | --- |
+| `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_SECURE` | SMTP server, port, and `true` for port 465 |
+| `EMAIL_USER`, `EMAIL_PASSWORD` | SMTP login |
+| `EMAIL_FROM`, `EMAIL_TO` | sender address and the inbox that receives messages |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Security notes
+
+- A strict Content-Security-Policy (`vercel.json`) allows scripts, styles, fonts and images from this site only, and no frames at all. Nothing on the page loads from a third party; Instagram and TikTok are ordinary links. Inline scripts and inline `style` attributes are blocked, so keep both out of the HTML. (The `application/ld+json` block is data, not a script, so it is unaffected.) Embedding something new (a scheduler, a map, a video) means adding its domain to the policy first.
+- `api/contact.js` accepts JSON from this site only, validates and length-limits every field, sends plain-text email, rate-limits each visitor, and has a hidden spam-trap field.
+- `nodemailer` is the only dependency and is pinned to an exact version. Bump it deliberately when a new release matters. It needs Node.js 20 or newer (Vercel > Project > Settings > Node.js Version).
